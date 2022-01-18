@@ -1,0 +1,5 @@
+packages:
+  - "docs"
+  - "packages/core/*"
+  - "packages/react/*"
+  - "packages/application-specific/*"
