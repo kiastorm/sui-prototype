@@ -1,6 +1,5 @@
 import { styled } from "@sui/react-stitches-config";
 import { cx } from "@sui/utils";
-import { withClassName } from "@sui/react-utils";
 import React from "react";
 
 export const StyledBox = styled("div", {
@@ -8,4 +7,10 @@ export const StyledBox = styled("div", {
   boxSizing: "border-box",
 });
 
-export const Box = withClassName("sui-box", StyledBox);
+export const Box = React.forwardRef((props, forwardedRef) => (
+  <StyledBox
+    ref={forwardedRef}
+    className={cx("sui-box", props.className)}
+    {...props}
+  />
+)) as typeof StyledBox;

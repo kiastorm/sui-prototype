@@ -1,12 +1,13 @@
 import type * as Stitches from "@stitches/react";
 import { createStitches } from "@stitches/react";
 import { stitchesConfig } from "@sui/stitches-config";
-import { omit } from "@sui/utils";
+import { cx, omit } from "@sui/utils";
 
 export type { VariantProps } from "@stitches/react";
+export type CSS = Stitches.CSS<typeof config>;
 
 export interface ThemingProps {
-  css: Stitches.CSS<typeof config>;
+  css: CSS;
 }
 
 export function omitThemingProps<T extends ThemingProps>(props: T) {
@@ -23,5 +24,3 @@ export const {
   globalCss,
   config,
 } = createStitches(stitchesConfig);
-
-export type CSS = Stitches.CSS<typeof config>;

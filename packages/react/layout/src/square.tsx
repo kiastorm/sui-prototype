@@ -1,5 +1,5 @@
 import { styled } from "@sui/react-stitches-config";
-import { withClassName } from "@sui/react-utils";
+import { withStyledComponentClassName } from "@sui/react-utils";
 
 export const squareStyles = {
   // Reset
@@ -101,4 +101,4 @@ export const squareStyles = {
  */
 export const StyledSquare = styled("div", squareStyles);
 
-export const Square = withClassName("sui-square", StyledSquare);
+export const Square = withStyledComponentClassName("sui-square", StyledSquare);

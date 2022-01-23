@@ -1,7 +1,8 @@
+import { StyledComponent } from "@stitches/react/types/styled-component";
 import { cx } from "@sui/utils";
 import React from "react";
 
-export const withClassName = <T extends { className: string }>(
+export const withStyledComponentClassName = (
   className: string,
   BaseComponent: React.ComponentType<T>
 ) => {
@@ -9,7 +10,7 @@ export const withClassName = <T extends { className: string }>(
     <BaseComponent {...props} className={cx(className, props.className)} />
   );
 
-  Component.displayName = `withClassName(${
+  Component.displayName = `withStyledComponentClassName(${
     BaseComponent.displayName || BaseComponent.name
   })`;
 

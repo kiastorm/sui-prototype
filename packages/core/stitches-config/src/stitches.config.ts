@@ -14,7 +14,7 @@ const stitchesMediaQueries = {
   hover: "(any-hover: hover)",
   dark: "(prefers-color-scheme: dark)",
   light: "(prefers-color-scheme: light)",
-};
+} as const;
 
 const stitchesUtils = {
   p: (value: Stitches.PropertyValue<"padding">) => ({
@@ -68,12 +68,12 @@ const stitchesUtils = {
   bgc: (value: Stitches.PropertyValue<"backgroundColor">) => ({
     backgroundColor: value,
   }),
-};
+} as const;
 
 export const stitchesConfig = {
   theme: { ...theme },
   media: { ...stitchesMediaQueries },
   utils: { ...stitchesUtils },
-};
+} as const;
 
 export const stitches = createStitches(stitchesConfig);

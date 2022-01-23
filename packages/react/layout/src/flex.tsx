@@ -1,7 +1,6 @@
 import { css, styled } from "@sui/react-stitches-config";
-import { withClassName } from "@sui/react-utils";
-
-const DEFAULT_TAG = "div";
+import { cx } from "@sui/utils";
+import React from "react";
 
 /**
  * `Flex` provides shorthand props for common flexbox css properties. It renders a `div` element with `display: flex` applied.
@@ -122,8 +121,14 @@ export const flexStyles = {
 
 export const flex = css(flexStyles);
 
-export const StyledFlex = styled(DEFAULT_TAG, flexStyles);
+export const StyledFlex = styled("div", flexStyles);
 
-export const Flex = withClassName("sui-flex", StyledFlex);
+export const Flex = React.forwardRef((props, forwardedRef) => (
+  <StyledFlex
+    ref={forwardedRef}
+    className={cx("sui-flex", props.className)}
+    {...props}
+  />
+)) as typeof StyledFlex;
 
-Flex.defaultTag = DEFAULT_TAG;
+Flex.displayName = "Flex";

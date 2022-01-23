@@ -16,11 +16,12 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
+    "@radix-ui/react-polymorphic": "^0.0.14",
     "@sui/react-stitches-config": "*"
   },
   "devDependencies": {
-    "@sui/tsconfig": "*",
     "@sui/eslint-preset-singlestore": "*",
+    "@sui/tsconfig": "*",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "react": "^17.0.2",

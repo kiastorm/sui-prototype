@@ -5,6 +5,7 @@
     "preserveSymlinks": true,
     "paths": {
       "*": ["node_modules/*"],
+      "@emotion/core": ["./types/index.d.ts"],
       "@sui/tsconfig": ["./packages/core/tsconfig"],
       "@sui/eslint-preset-singlestore": [
         "./packages/core/eslint-preset-singlestore"

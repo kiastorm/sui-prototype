@@ -1,5 +1,5 @@
 import { styled } from "@sui/react-stitches-config";
-import { withClassName } from "@sui/react-utils";
+import { withStyledComponentClassName } from "@sui/react-utils";
 import { squareStyles } from ".";
 
 export const circleStyles = {
@@ -12,4 +12,4 @@ export const circleStyles = {
  */
 export const StyledCircle = styled("div", circleStyles);
 
-export const Circle = withClassName("sui-circle", StyledCircle);
+export const Circle = withStyledComponentClassName("sui-circle", StyledCircle);
