@@ -10,21 +10,19 @@
       "@sui/eslint-preset-singlestore": [
         "./packages/core/eslint-preset-singlestore"
       ],
-      "@sui/utils": ["./packages/core/utils/src"],
-      "@sui/theme": ["./packages/core/theme/src"],
-      "@sui/stitches-config": ["./packages/core/stitches-config/src"],
+      "@sui/utils": ["./packages/core/utils"],
+      "@sui/theme": ["./packages/core/theme"],
+      "@sui/stitches-config": ["./packages/core/stitches-config"],
 
-      "@sui/react-stitches-config": [
-        "./packages/react/react-stitches-config/src"
-      ],
-      "@sui/react-accessible-icon": ["./packages/react/accessible-icon/src"],
-      "@sui/react-button": ["./packages/react/button/src"],
-      "@sui/react-form-control": ["./packages/react/form-control/src"],
-      "@sui/react-layout": ["./packages/react/layout/src"],
-      "@sui/react-utils": ["./packages/react/react-utils/src"],
-      "@sui/react-text-field": ["./packages/react/text-field/src"],
-      "@sui/react-spinner": ["./packages/react/spinner/src"],
-      "@sui/react-visually-hidden": ["./packages/react/visually-hidden/src"]
+      "@sui/react-stitches": ["./packages/react/react-stitches"],
+      "@sui/react-icon": ["./packages/react/icon"],
+      "@sui/react-button": ["./packages/react/button"],
+      "@sui/react-form-control": ["./packages/react/form-control"],
+      "@sui/react-layout": ["./packages/react/layout"],
+      "@sui/react-utils": ["./packages/react/react-utils"],
+      "@sui/react-text-field": ["./packages/react/text-field"],
+      "@sui/react-spinner": ["./packages/react/spinner"],
+      "@sui/react-visually-hidden": ["./packages/react/visually-hidden"]
     }
   }
 }
