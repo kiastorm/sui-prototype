@@ -1,8 +1,8 @@
-import { CSS } from "@sui/react-stitches";
-import { Box } from "@sui/react-layout";
-import { Spinner } from "@sui/react-spinner";
+import { CSS } from "../react-stitches";
+import { Box } from "../layout";
+import { Spinner } from "../spinner";
 import * as React from "react";
-import { cx, __DEV__ } from "@sui/utils";
+import { cx, __DEV__ } from "../../core/utils";
 
 export interface ButtonSpinnerProps extends React.ComponentProps<typeof Box> {
   label?: string;

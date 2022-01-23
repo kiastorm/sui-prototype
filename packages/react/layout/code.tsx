@@ -1,4 +1,4 @@
-import { styled } from "@sui/react-stitches";
+import { styled } from "../react-stitches";
 
 export const Code = styled("code", {
   fontFamily: "$mono",

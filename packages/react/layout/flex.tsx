@@ -1,5 +1,5 @@
-import { css, styled } from "@sui/react-stitches";
-import { cx } from "@sui/utils";
+import { css, styled } from "../react-stitches";
+import { cx } from "../../core/utils";
 import React from "react";
 
 /**

@@ -1,6 +1,6 @@
-import { styled } from "@sui/react-stitches";
-import { cx, omitThemingProps, ThemingProps } from "@sui/utils";
-import { FormControlOptions, useFormControl } from "@sui/react-form-control";
+import { styled, omitThemingProps, ThemingProps } from "../react-stitches";
+import { cx } from "../../core/utils";
+import { FormControlOptions, useFormControl } from "../form-control";
 import * as React from "react";
 
 export const StyledTextField = styled("input", {

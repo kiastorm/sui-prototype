@@ -1,9 +1,9 @@
 import {
   AccessibleIcon as Icon,
   AccessibleIconProps as IconProps,
-} from "@sui/react-icon";
-import { cx, __DEV__ } from "@sui/utils";
-import { omitThemingProps, ThemingProps } from "@sui/react-stitches";
+} from "../icon";
+import { cx, __DEV__ } from "../../core/utils";
+import { omitThemingProps, ThemingProps } from "../react-stitches";
 import * as React from "react";
 import { useFormControlContext } from "./form-control";
 import { Primitive } from "@radix-ui/react-primitive";

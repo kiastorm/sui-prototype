@@ -1,4 +1,4 @@
-import { Flex } from "@sui/react-layout";
+import { Flex } from "../layout";
 import { Button, buttonVariants } from ".";
 import {
   Title,

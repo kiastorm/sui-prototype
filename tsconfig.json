@@ -2,27 +2,9 @@
   "extends": "./tsconfig.base.json",
   "noErrorTruncation": true,
   "compilerOptions": {
-    "preserveSymlinks": true,
     "paths": {
       "*": ["node_modules/*"],
-      "@emotion/core": ["./types/index.d.ts"],
-      "@sui/tsconfig": ["./packages/core/tsconfig"],
-      "@sui/eslint-preset-singlestore": [
-        "./packages/core/eslint-preset-singlestore"
-      ],
-      "@sui/utils": ["./packages/core/utils"],
-      "@sui/theme": ["./packages/core/theme"],
-      "@sui/stitches-config": ["./packages/core/stitches-config"],
-
-      "@sui/react-stitches": ["./packages/react/react-stitches"],
-      "@sui/react-icon": ["./packages/react/icon"],
-      "@sui/react-button": ["./packages/react/button"],
-      "@sui/react-form-control": ["./packages/react/form-control"],
-      "@sui/react-layout": ["./packages/react/layout"],
-      "@sui/react-utils": ["./packages/react/react-utils"],
-      "@sui/react-text-field": ["./packages/react/text-field"],
-      "@sui/react-spinner": ["./packages/react/spinner"],
-      "@sui/react-visually-hidden": ["./packages/react/visually-hidden"]
+      "@emotion/core": ["./types/index.d.ts"]
     }
   }
 }

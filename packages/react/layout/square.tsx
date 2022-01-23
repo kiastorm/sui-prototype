@@ -1,5 +1,5 @@
-import { styled } from "@sui/react-stitches";
-import { cx } from "@sui/utils";
+import { styled } from "../react-stitches";
+import { cx } from "../../core/utils";
 import React from "react";
 
 export const squareStyles = {

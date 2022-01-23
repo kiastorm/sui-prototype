@@ -1,6 +1,6 @@
-import { styled } from "@sui/react-stitches";
-import { cx } from "@sui/utils";
 import React from "react";
+import { cx } from "../../core/utils";
+import { styled } from "../react-stitches";
 
 export const StyledBox = styled("div", {
   // Reset

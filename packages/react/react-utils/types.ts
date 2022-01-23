@@ -1,4 +1,4 @@
-import { EventKeys, Merge } from "@sui/utils";
+import { EventKeys, Merge } from "../../core/utils";
 import * as React from "react";
 
 export type MaybeRenderProp<P> =

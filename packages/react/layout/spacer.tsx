@@ -1,4 +1,4 @@
-import { styled } from "@sui/react-stitches";
+import { styled } from "../react-stitches";
 
 export const Spacer = styled("div", {
   flex: 1,

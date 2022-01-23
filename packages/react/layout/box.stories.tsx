@@ -1,5 +1,4 @@
 import { Story } from "@storybook/react";
-import React from "react";
 import { Box } from ".";
 
 const config = {

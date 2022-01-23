@@ -1,8 +1,8 @@
 import { Primitive } from "@radix-ui/react-primitive";
-import { cx, __DEV__ } from "@sui/utils";
+import { cx, __DEV__ } from "../../core/utils";
 import * as React from "react";
 import { useFormControlContext } from "./form-control";
-import { omitThemingProps, ThemingProps } from "@sui/react-stitches";
+import { omitThemingProps, ThemingProps } from "../react-stitches";
 
 export interface FormLabelProps
   extends React.ComponentPropsWithoutRef<"label">,

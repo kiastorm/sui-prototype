@@ -1,9 +1,9 @@
 import type * as Radix from "@radix-ui/react-primitive";
 import { Primitive } from "@radix-ui/react-primitive";
-import { AccessibleIcon } from "@sui/react-icon";
-import { styled } from "@sui/react-stitches";
+import { AccessibleIcon } from "../icon";
+import { styled } from "../react-stitches";
 import * as React from "react";
-import { cx, dataAttr } from "@sui/utils";
+import { cx, dataAttr } from "../../core/utils";
 import { ButtonSpinner } from "./button-spinner";
 import { StyledButton } from "./button.styles";
 

@@ -1,5 +1,5 @@
 import { StyledComponent } from "@stitches/react/types/styled-component";
-import { cx } from "@sui/utils";
+import { cx } from "../../core/utils";
 import React from "react";
 
 export const withStyledComponentClassName = (

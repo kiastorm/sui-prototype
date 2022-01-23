@@ -1,8 +1,8 @@
-import { keyframes } from "@sui/react-stitches";
-import { cx, __DEV__ } from "@sui/utils";
-import { VisuallyHidden } from "@sui/react-visually-hidden";
+import { keyframes } from "../react-stitches";
+import { cx, __DEV__ } from "../../core/utils";
+import { VisuallyHidden } from "../visually-hidden";
 import * as React from "react";
-import { Box } from "@sui/react-layout";
+import { Box } from "../layout";
 
 const spin = keyframes({
   "0%": {

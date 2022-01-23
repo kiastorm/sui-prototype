@@ -1,4 +1,4 @@
-import { isFunction } from "@sui/utils";
+import { isFunction } from "../../core/utils";
 
 export type ReactRef<T> =
   | React.Ref<T>

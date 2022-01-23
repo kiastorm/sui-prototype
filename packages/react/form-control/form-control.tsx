@@ -5,9 +5,9 @@ import {
   PropGetterV2,
   useBoolean,
   useId,
-} from "@sui/react-utils";
-import { cx, dataAttr, __DEV__ } from "@sui/utils";
-import { omitThemingProps, ThemingProps } from "@sui/react-stitches";
+} from "../react-utils";
+import { cx, dataAttr, __DEV__ } from "../../core/utils";
+import { omitThemingProps, ThemingProps } from "../react-stitches";
 import * as React from "react";
 
 export interface FormControlOptions {

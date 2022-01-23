@@ -1,7 +1,7 @@
 import type * as Stitches from "@stitches/react";
 import { createStitches } from "@stitches/react";
-import { stitchesConfig } from "@sui/stitches-config";
-import { cx, omit } from "@sui/utils";
+import { stitchesConfig } from "../../core/stitches-config";
+import { cx, omit } from "../../core/utils";
 
 export type { VariantProps } from "@stitches/react";
 export type CSS = Stitches.CSS<typeof config>;

@@ -1,4 +1,4 @@
-import { styled } from "@sui/react-stitches";
+import { styled } from "../react-stitches";
 
 export const Kbd = styled("kbd", {
   boxSizing: "border-box",

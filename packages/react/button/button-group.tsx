@@ -1,8 +1,9 @@
 import type * as Radix from "@radix-ui/react-primitive";
 import { Primitive } from "@radix-ui/react-primitive";
-import { createContext } from "@sui/react-utils";
-import { cx, ThemingProps, __DEV__ } from "@sui/utils";
+import { createContext } from "../react-utils";
+import { cx, __DEV__ } from "../../core/utils";
 import * as React from "react";
+import { ThemingProps } from "../react-stitches";
 import { Button } from "./button";
 
 export interface ButtonGroupProps

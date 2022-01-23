@@ -1,7 +1,7 @@
 import { createStitches } from "@stitches/core";
 import type * as Stitches from "@stitches/core";
 export type { VariantProps } from "@stitches/core";
-import { theme } from "@sui/theme";
+import { theme } from "../theme";
 
 export type CSS = Stitches.CSS<typeof stitches.config>;
 
