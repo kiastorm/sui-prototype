@@ -1,12 +1,11 @@
 {
-  "name": "turborepo-design-system",
+  "name": "design-system",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
     "packages/core/*",
     "packages/react/*",
-    "packages/application-specific/*",
-    "docs"
+    "packages/application-specific/*"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -18,18 +17,20 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@singlestore-ui/core": "*",
-    "@singlestore-ui/react-accessible-icon": "*",
-    "@singlestore-ui/react-button": "*",
-    "@singlestore-ui/react-layout": "*",
-    "@singlestore-ui/react-spinner": "*",
-    "@singlestore-ui/react-utils": "*",
-    "@singlestore-ui/react-visually-hidden": "*",
-    "@singlestore-ui/utils": "*",
+    "@storybook/addon-docs": "^6.4.13",
     "@storybook/addon-storysource": "^6.4.13",
     "@storybook/addons": "^6.4.13",
+    "@storybook/components": "^6.4.14",
     "@storybook/react": "^6.4.13",
     "@storybook/theming": "^6.4.13",
+    "@sui/react-accessible-icon": "*",
+    "@sui/react-button": "*",
+    "@sui/react-layout": "*",
+    "@sui/react-spinner": "*",
+    "@sui/react-stitches-config": "*",
+    "@sui/react-utils": "*",
+    "@sui/react-visually-hidden": "*",
+    "@sui/utils": "*",
     "eslint": "7.32.0",
     "prettier": "^2.5.1",
     "react": "^17.0.2",

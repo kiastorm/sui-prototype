@@ -1,13 +1,82 @@
-import { Flex } from "@singlestore-ui/react-layout";
-import { Button } from "../src";
-
-export default {
-  title: "Packages/button/Button",
-};
+import { Flex } from "@sui/react-layout";
+import { Button, buttonVariants } from "../src";
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  ArgsTable,
+  Stories,
+  PRIMARY_STORY,
+} from "@storybook/addon-docs";
 
 export const basic = () => (
   <>
-    <Button>Button</Button>
+    {Object.keys(buttonVariants.variant).map(
+      (variant: keyof typeof buttonVariants["variant"]) => {
+        return (
+          <Flex gap="3">
+            <Flex
+              gap="6"
+              css={{
+                flexDirection: "column",
+                p: "$6",
+              }}
+            >
+              <Flex gap="3">
+                <Button variant={variant}>Button</Button>
+                <Button variant={variant} size="2">
+                  Button
+                </Button>
+                <Button variant={variant} size="3">
+                  Button
+                </Button>
+              </Flex>
+              <Flex gap="3">
+                <Button variant={variant} disabled>
+                  Button
+                </Button>
+                <Button variant={variant} disabled size="2">
+                  Button
+                </Button>
+                <Button variant={variant} disabled size="3">
+                  Button
+                </Button>
+              </Flex>
+            </Flex>
+            <Flex
+              gap="6"
+              css={{
+                flexDirection: "column",
+                p: "$6",
+                backgroundColor: "black",
+              }}
+            >
+              <Flex gap="3">
+                <Button variant={variant}>Button</Button>
+                <Button variant={variant} size="2">
+                  Button
+                </Button>
+                <Button variant={variant} size="3">
+                  Button
+                </Button>
+              </Flex>
+              <Flex gap="3">
+                <Button variant={variant} disabled>
+                  Button
+                </Button>
+                <Button variant={variant} disabled size="2">
+                  Button
+                </Button>
+                <Button variant={variant} disabled size="3">
+                  Button
+                </Button>
+              </Flex>
+            </Flex>
+          </Flex>
+        );
+      }
+    )}
   </>
 );
 

@@ -1,0 +1,8 @@
+{
+  "include": ["."],
+  "exclude": ["node_modules", ".eslintrc.js"],
+  "extends": "./packages/core/tsconfig/react-library.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}

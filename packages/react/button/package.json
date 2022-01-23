@@ -1,5 +1,5 @@
 {
-  "name": "@singlestore-ui/react-button",
+  "name": "@sui/react-button",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -17,18 +17,18 @@
   },
   "dependencies": {
     "@radix-ui/react-primitive": "^0.1.3",
-    "@singlestore-ui/react-accessible-icon": "*",
-    "@singlestore-ui/core": "*",
-    "@singlestore-ui/react-layout": "*",
-    "@singlestore-ui/react-utils": "*",
-    "@singlestore-ui/utils": "*",
-    "@singlestore-ui/react-spinner": "*"
+    "@sui/react-accessible-icon": "*",
+    "@sui/react-stitches-config": "*",
+    "@sui/react-layout": "*",
+    "@sui/react-utils": "*",
+    "@sui/utils": "*",
+    "@sui/react-spinner": "*"
   },
   "devDependencies": {
-    "@singlestore-ui/tsconfig": "*",
+    "@sui/tsconfig": "*",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
-    "eslint-preset-singlestore": "*",
+    "@sui/eslint-preset-singlestore": "*",
     "react": "^17.0.2",
     "tsup": "^5.10.1",
     "typescript": "^4.5.3"

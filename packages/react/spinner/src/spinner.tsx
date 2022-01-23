@@ -1,6 +1,6 @@
-import { keyframes } from "@singlestore-ui/core";
-import { cx, __DEV__ } from "@singlestore-ui/utils";
-import { VisuallyHidden } from "@singlestore-ui/react-visually-hidden";
+import { keyframes } from "@sui/react-stitches-config";
+import { cx, __DEV__ } from "@sui/utils";
+import { VisuallyHidden } from "@sui/react-visually-hidden";
 import * as React from "react";
 import { Box } from "../../layout/src/box";
 

@@ -1,10 +1,5 @@
 import { Primitive } from "@radix-ui/react-primitive";
-import {
-  cx,
-  omitThemingProps,
-  ThemingProps,
-  __DEV__,
-} from "@singlestore-ui/utils";
+import { cx, omitThemingProps, ThemingProps, __DEV__ } from "@sui/utils";
 import * as React from "react";
 import { useFormControlContext } from "./form-control";
 

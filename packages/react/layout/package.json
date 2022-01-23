@@ -1,5 +1,5 @@
 {
-  "name": "@singlestore-ui/react-layout",
+  "name": "@sui/react-layout",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,11 +16,11 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@singlestore-ui/core": "*"
+    "@sui/react-stitches-config": "*"
   },
   "devDependencies": {
-    "@singlestore-ui/tsconfig": "*",
-    "eslint-preset-singlestore": "*",
+    "@sui/tsconfig": "*",
+    "@sui/eslint-preset-singlestore": "*",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "react": "^17.0.2",

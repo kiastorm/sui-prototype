@@ -1,8 +1,8 @@
-import { CSS } from "@singlestore-ui/core";
-import { Box } from "@singlestore-ui/react-layout";
-import { Spinner } from "@singlestore-ui/react-spinner";
+import { CSS } from "@sui/react-stitches-config";
+import { Box } from "@sui/react-layout";
+import { Spinner } from "@sui/react-spinner";
 import * as React from "react";
-import { cx, __DEV__ } from "@singlestore-ui/utils";
+import { cx, __DEV__ } from "@sui/utils";
 
 export interface ButtonSpinnerProps extends React.ComponentProps<typeof Box> {
   label?: string;

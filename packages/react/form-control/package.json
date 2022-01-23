@@ -1,5 +1,5 @@
 {
-  "name": "@singlestore-ui/form-control",
+  "name": "@sui/form-control",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,10 +16,10 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@singlestore-ui/tsconfig": "*",
+    "@sui/tsconfig": "*",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
-    "eslint-preset-singlestore": "*",
+    "@sui/eslint-preset-singlestore": "*",
     "react": "^17.0.2",
     "tsup": "^5.10.1",
     "typescript": "^4.5.3"
@@ -28,9 +28,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@singlestore-ui/core": "*",
-    "@singlestore-ui/utils": "*",
-    "@singlestore-ui/react-utils": "*",
+    "@sui/react-stitches-config": "*",
+    "@sui/utils": "*",
+    "@sui/react-utils": "*",
     "@radix-ui/react-primitive": "^0.1.3"
   }
 }

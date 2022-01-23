@@ -1,4 +1,4 @@
-import { ariaAttr, callAllHandlers } from "@singlestore-ui/utils";
+import { ariaAttr, callAllHandlers } from "@sui/utils";
 import { FocusEventHandler } from "react";
 import { FormControlOptions, useFormControlContext } from "./form-control";
 

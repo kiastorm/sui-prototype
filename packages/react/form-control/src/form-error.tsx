@@ -1,10 +1,5 @@
-import Icon, { IconProps } from "@singlestore-ui/react-accessible-icon";
-import {
-  cx,
-  omitThemingProps,
-  ThemingProps,
-  __DEV__,
-} from "@singlestore-ui/utils";
+import Icon, { IconProps } from "@sui/react-accessible-icon";
+import { cx, omitThemingProps, ThemingProps, __DEV__ } from "@sui/utils";
 import * as React from "react";
 import { useFormControlContext } from "./form-control";
 

@@ -1,5 +1,6 @@
-import { styled } from "@singlestore-ui/core";
-import { cx, omitThemingProps, ThemingProps } from "@singlestore-ui/utils";
+import { styled } from "@sui/react-stitches-config";
+import { cx, omitThemingProps, ThemingProps } from "@sui/utils";
+import { FormControlOptions, useFormControl } from "@sui/react-form-control";
 import * as React from "react";
 
 export const StyledTextField = styled("input", {
@@ -21,10 +22,26 @@ export const StyledTextField = styled("input", {
   },
 
   // Custom
-  backgroundColor: "$loContrast",
-  boxShadow: "inset 0 0 0 1px $colors$slate7",
+  //  background-color: rgba($color-neutral-500, 0.13);
+  //       border-radius: 4px;
+  //       border: 2px solid transparent;
+  //       @include placeholder {
+  //           color: $color-neutral-500;
+  //       }
+
+  //       &:hover:not(:disabled) {
+  //           background: rgba($color-neutral-500, 0.2);
+  //       }
+
+  //       &:focus:not(:disabled),
+  //       &:active:not(:disabled) {
+  //           background: $color-neutral-0;
+  //           border-color: $color-purple-600;
+  //       }
+  // backgroundColor: "$neutral200",
   color: "$hiContrast",
   fontVariantNumeric: "tabular-nums",
+  boxShadow: "inset 0 0 0 1px $colors$neutral500",
 
   "&:-webkit-autofill": {
     boxShadow: "inset 0 0 0 1px $colors$blue6, inset 0 0 0 100px $colors$blue3",
@@ -36,11 +53,12 @@ export const StyledTextField = styled("input", {
   },
 
   "&:focus": {
+    backgroundColor: "$neutral0",
     boxShadow:
-      "inset 0px 0px 0px 1px $colors$blue8, 0px 0px 0px 1px $colors$blue8",
+      "inset 0px 0px 0px 1px $colors$purple600, 0px 0px 0px 1px $colors$purple600",
     "&:-webkit-autofill": {
       boxShadow:
-        "inset 0px 0px 0px 1px $colors$blue8, 0px 0px 0px 1px $colors$blue8, inset 0 0 0 100px $colors$blue3",
+        "inset 0px 0px 0px 1px $colors$$colors$purple600, 0px 0px 0px 1px $colors$$colors$purple600, inset 0 0 0 100px $colors$blue3",
     },
   },
   "&::placeholder": {
@@ -97,7 +115,7 @@ export const StyledTextField = styled("input", {
         "&:focus": {
           backgroundColor: "$loContrast",
           boxShadow:
-            "inset 0px 0px 0px 1px $colors$blue8, 0px 0px 0px 1px $colors$blue8",
+            "inset 0px 0px 0px 1px $colors$$colors$purple600, 0px 0px 0px 1px $colors$$colors$purple600",
         },
         "&:disabled": {
           backgroundColor: "transparent",

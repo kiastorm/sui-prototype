@@ -1,14 +1,13 @@
 import type * as Radix from "@radix-ui/react-primitive";
 import { Primitive } from "@radix-ui/react-primitive";
-import { AccessibleIcon } from "@singlestore-ui/react-accessible-icon";
-import { styled } from "@singlestore-ui/core";
+import { AccessibleIcon } from "@sui/react-accessible-icon";
+import { styled } from "@sui/react-stitches-config";
 import * as React from "react";
-import { cx, dataAttr } from "@singlestore-ui/utils";
+import { cx, dataAttr } from "@sui/utils";
 import { ButtonSpinner } from "./button-spinner";
+import { StyledButton } from "./button.styles";
 
 const BUTTON_NAME = "Button";
-
-const StyledButton = styled(Primitive.button, {});
 
 type ButtonElement = React.ElementRef<typeof Primitive.button>;
 

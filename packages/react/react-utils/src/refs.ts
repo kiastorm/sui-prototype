@@ -1,4 +1,4 @@
-import { isFunction } from "@singlestore-ui/utils";
+import { isFunction } from "@sui/utils";
 
 export type ReactRef<T> =
   | React.Ref<T>

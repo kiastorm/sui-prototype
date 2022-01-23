@@ -1,4 +1,4 @@
-import { EventKeys, Merge } from "@singlestore-ui/utils";
+import { EventKeys, Merge } from "@sui/utils";
 import * as React from "react";
 
 export type MaybeRenderProp<P> =

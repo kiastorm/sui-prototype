@@ -1,0 +1,9 @@
+/// <reference types="react" />
+export declare const basic: () => JSX.Element;
+export declare const WithIcon: () => JSX.Element;
+export declare const withReactIcons: () => JSX.Element;
+export declare const WithLoading: () => JSX.Element;
+export declare const WithLoadingSpinnerPlacement: () => JSX.Element;
+export declare const withDisabled: () => JSX.Element;
+export declare const customComposition: () => JSX.Element;
+//# sourceMappingURL=button.stories.d.ts.map

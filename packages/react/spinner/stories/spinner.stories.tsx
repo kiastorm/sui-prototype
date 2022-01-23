@@ -1,4 +1,4 @@
-import { Flex } from "@singlestore-ui/react-layout";
+import { Flex } from "@sui/react-layout";
 import * as React from "react";
 import { Spinner } from "../src";
 

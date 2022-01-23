@@ -1,5 +1,5 @@
 {
-  "name": "@singlestore-ui/react-spinner",
+  "name": "@sui/react-spinner",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -16,13 +16,13 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@singlestore-ui/core": "*",
-    "@singlestore-ui/utils": "*",
-    "@singlestore-ui/react-visually-hidden": "*"
+    "@sui/react-stitches-config": "*",
+    "@sui/utils": "*",
+    "@sui/react-visually-hidden": "*"
   },
   "devDependencies": {
-    "@singlestore-ui/tsconfig": "*",
-    "eslint-preset-singlestore": "*",
+    "@sui/tsconfig": "*",
+    "@sui/eslint-preset-singlestore": "*",
     "@types/react": "^17.0.13",
     "@types/react-dom": "^17.0.8",
     "react": "^17.0.2",

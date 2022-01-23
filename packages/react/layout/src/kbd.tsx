@@ -1,4 +1,4 @@
-import { styled } from "@singlestore-ui/core";
+import { styled } from "@sui/react-stitches-config";
 
 export const Kbd = styled("kbd", {
   boxSizing: "border-box",

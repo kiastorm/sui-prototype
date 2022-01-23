@@ -1,1 +1,1 @@
-module.exports = require("./packages/eslint-preset-singlestore");
+module.exports = require("./packages/core/eslint-preset-singlestore");

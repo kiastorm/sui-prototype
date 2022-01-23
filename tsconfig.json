@@ -1,26 +1,29 @@
 {
-  "include": ["."],
-  "exclude": ["node_modules", ".eslintrc.js"],
-  "extends": "./packages/tsconfig/react-library.json",
+  "extends": "./tsconfig.base.json",
+  "noErrorTruncation": true,
   "compilerOptions": {
-    "baseUrl": ".",
+    "preserveSymlinks": true,
     "paths": {
       "*": ["node_modules/*"],
-      "@singlestore-ui/core": ["./packages/core/core/src"],
-      "@singlestore-ui/utils": ["./packages/core/utils/src"],
-      "@singlestore-ui/react-layout": ["./packages/react/layout/src"],
-      "@singlestore-ui/react-utils": ["./packages/react/utils/src"],
-      "@singlestore-ui/react-spinner": ["./packages/react/spinner/src"],
-      "@singlestore-ui/react-button": ["./packages/react/button/src"],
-      "@singlestore-ui/react-form-control": [
-        "./packages/react/form-control/src"
+      "@sui/tsconfig": ["./packages/core/tsconfig"],
+      "@sui/eslint-preset-singlestore": [
+        "./packages/core/eslint-preset-singlestore"
       ],
-      "@singlestore-ui/react-visually-hidden": [
-        "./packages/react/visually-hidden/src"
+      "@sui/utils": ["./packages/core/utils/src"],
+      "@sui/theme": ["./packages/core/theme/src"],
+      "@sui/stitches-config": ["./packages/core/stitches-config/src"],
+
+      "@sui/react-stitches-config": [
+        "./packages/react/react-stitches-config/src"
       ],
-      "@singlestore-ui/react-accessible-icon": [
-        "./packages/react/accessible-icon/src"
-      ]
+      "@sui/react-accessible-icon": ["./packages/react/accessible-icon/src"],
+      "@sui/react-button": ["./packages/react/button/src"],
+      "@sui/react-form-control": ["./packages/react/form-control/src"],
+      "@sui/react-layout": ["./packages/react/layout/src"],
+      "@sui/react-utils": ["./packages/react/react-utils/src"],
+      "@sui/react-text-field": ["./packages/react/text-field/src"],
+      "@sui/react-spinner": ["./packages/react/spinner/src"],
+      "@sui/react-visually-hidden": ["./packages/react/visually-hidden/src"]
     }
   }
 }

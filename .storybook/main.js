@@ -3,11 +3,23 @@ const path = require("path");
 module.exports = {
   stories: [
     "../packages/**/*.stories.tsx",
+    "../docs/**/*.stories.mdx",
     // "./recipes/*.stories.tsx",
     // "./pages/*.stories.tsx",
     // "./snowflakes/*.stories.tsx",
   ],
-  addons: ["@storybook/addon-storysource"],
+  addons: ["@storybook/addon-docs", "@storybook/addon-storysource"],
+  staticDirs: ["../public"],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
+  },
 
   // we need to add aliases to webpack so it knows how to follow
   // to the source of the packages rather than the built version (dist)

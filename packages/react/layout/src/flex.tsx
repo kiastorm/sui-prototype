@@ -1,10 +1,19 @@
-import { styled } from "@singlestore-ui/core";
+import { css, styled } from "@sui/react-stitches-config";
+import { withClassName } from "@sui/react-utils";
 
-export const Flex = styled("div", {
+const DEFAULT_TAG = "div";
+
+/**
+ * `Flex` provides shorthand props for common flexbox css properties. It renders a `div` element with `display: flex` applied.
+ * The `gap` prop is particularly useful for adding spacing between flex items.
+ */
+export const flexStyles = {
   boxSizing: "border-box",
   display: "flex",
-
   variants: {
+    /**
+     * Shorthand prop for `flex-direction` css attribute.
+     */
     direction: {
       row: {
         flexDirection: "row",
@@ -19,6 +28,9 @@ export const Flex = styled("div", {
         flexDirection: "column-reverse",
       },
     },
+    /**
+     * Shorthand prop for `align-items` css attribute.
+     */
     align: {
       start: {
         alignItems: "flex-start",
@@ -36,6 +48,9 @@ export const Flex = styled("div", {
         alignItems: "baseline",
       },
     },
+    /**
+     * Shorthand prop for `justify-content` css attribute.
+     */
     justify: {
       start: {
         justifyContent: "flex-start",
@@ -50,6 +65,9 @@ export const Flex = styled("div", {
         justifyContent: "space-between",
       },
     },
+    /**
+     * Shorthand prop for `flex-wrap` css attribute.
+     */
     wrap: {
       noWrap: {
         flexWrap: "nowrap",
@@ -61,6 +79,9 @@ export const Flex = styled("div", {
         flexWrap: "wrap-reverse",
       },
     },
+    /**
+     * Shorthand prop for `gap`  css attribute.
+     */
     gap: {
       1: {
         gap: "$1",
@@ -97,4 +118,12 @@ export const Flex = styled("div", {
     justify: "start",
     wrap: "noWrap",
   },
-});
+} as const;
+
+export const flex = css(flexStyles);
+
+export const StyledFlex = styled(DEFAULT_TAG, flexStyles);
+
+export const Flex = withClassName("sui-flex", StyledFlex);
+
+Flex.defaultTag = DEFAULT_TAG;

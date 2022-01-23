@@ -1,20 +1,19 @@
-import {
-  cx,
-  dataAttr,
-  __DEV__,
-  omitThemingProps,
-  ThemingProps,
-} from "@singlestore-ui/utils";
+import { Primitive } from "@radix-ui/react-primitive";
 import {
   createContext,
   mergeRefs,
-  PropGetter,
   PropGetterV2,
   useBoolean,
   useId,
-} from "@singlestore-ui/react-utils";
+} from "@sui/react-utils";
+import {
+  cx,
+  dataAttr,
+  omitThemingProps,
+  ThemingProps,
+  __DEV__,
+} from "@sui/utils";
 import * as React from "react";
-import { Primitive } from "@radix-ui/react-primitive";
 
 export interface FormControlOptions {
   /**
