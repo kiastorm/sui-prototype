@@ -1,4 +1,4 @@
-import { EventKeys, Merge } from "../../core/utils";
+import { EventKeys, Merge, Dict } from "../../core/utils";
 import * as React from "react";
 
 export type MaybeRenderProp<P> =
@@ -10,7 +10,7 @@ type WithoutStyleAttr<T> = Omit<T, "color" | "width" | "height">;
 export type HTMLProps<T = any> = WithoutStyleAttr<React.HTMLAttributes<T>> &
   React.RefAttributes<T>;
 
-export type PropGetter<T extends HTMLElement = any, P = {}> = (
+export type PropGetter<T extends HTMLElement = any, P = Dict> = (
   props?: Merge<HTMLProps<T>, P>,
   ref?: React.Ref<any> | React.RefObject<any>
 ) => Merge<HTMLProps<T>, P>;

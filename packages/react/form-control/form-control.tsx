@@ -226,7 +226,7 @@ if (__DEV__) {
   FormControl.displayName = "FormControl";
 }
 
-export interface HelpTextProps extends React.ComponentPropsWithoutRef<"div"> {}
+export type HelpTextProps = React.ComponentPropsWithoutRef<"div">;
 
 /**
  * FormHelperText

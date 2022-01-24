@@ -39,13 +39,13 @@ const config: Meta<React.ComponentProps<typeof Square>> = {
 
 export default config;
 
-export const basic = ({ css, ...rest }) => (
+export const Basic = ({ css, ...rest }) => (
   <Flex gap="4" wrap="wrap" align="center" css={css}>
     <Square {...rest}>{rest.size}</Square>
   </Flex>
 );
 
-basic.args = {
+Basic.args = {
   css: {
     ".sui-square": {
       fontWeight: "bold",

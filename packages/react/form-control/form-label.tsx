@@ -48,8 +48,7 @@ if (__DEV__) {
   FormLabel.displayName = "FormLabel";
 }
 
-export interface RequiredIndicatorProps
-  extends React.ComponentPropsWithoutRef<"span"> {}
+export type RequiredIndicatorProps = React.ComponentPropsWithoutRef<"span">;
 
 /**
  * Used to show a "required" text or an asterisks (*) to indicate that

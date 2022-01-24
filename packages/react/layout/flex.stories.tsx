@@ -33,7 +33,7 @@ const config: Meta<React.ComponentProps<typeof Flex>> = {
         control: "string",
         table: {
           type: null,
-          ...(!!flexStyles.defaultVariants[current]
+          ...(flexStyles.defaultVariants[current]
             ? { defaultValue: { summary: flexStyles.defaultVariants[current] } }
             : {}),
         },
@@ -46,19 +46,19 @@ const config: Meta<React.ComponentProps<typeof Flex>> = {
 
 export default config;
 
-export const basic = (args) => (
-  <Flex {...args}>
+export const Basic = (args) => (
+  <Flex
+    gap={6}
+    css={{
+      bgc: "$green400",
+      px: "$2",
+      py: "$4",
+      ".sui-box": { bgc: "red" },
+    }}
+    {...args}
+  >
     <Box>Flex item 1</Box>
     <Box>Flex item 2</Box>
     <Box>Flex item 3</Box>
   </Flex>
 );
-
-basic.args = {
-  css: {
-    bgc: "$green400",
-    px: "$2",
-    py: "$4",
-    ".sui-box": { bgc: "$yellow400" },
-  },
-};

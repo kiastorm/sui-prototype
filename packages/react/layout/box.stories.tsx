@@ -25,9 +25,9 @@ export default config;
 
 const Template: Story = (props: any) => <Box {...props} />;
 
-export const basic = Template.bind({});
+export const Basic = Template.bind({});
 
-basic.args = {
+Basic.args = {
   as: "marquee",
   css: {
     bgc: "$neutral200",

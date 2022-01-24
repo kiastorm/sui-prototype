@@ -10,7 +10,7 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 
-export const basic = () => (
+export const Basic = () => (
   <>
     {Object.keys(buttonVariants.variant).map(
       (variant: keyof typeof buttonVariants["variant"]) => {

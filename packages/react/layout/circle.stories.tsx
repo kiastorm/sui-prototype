@@ -1,29 +1,16 @@
 import { Flex, Circle, Square, circleStyles } from ".";
 import React from "react";
+import { Meta } from "@storybook/react";
 
-const config = {
+const config: Meta = {
   title: "Design System/Circle",
   component: Circle,
-  argTypes: {
-    as: {
-      control: "text",
-      description: "What element to render as",
-    },
-    ref: {
-      table: {
-        disable: true,
-      },
-    },
-    css: {
-      control: "object",
-      description: "Theme-aware CSS properties",
-    },
-  },
+  argTypes: false,
 };
 
 export default config;
 
-export const basic = (args) => (
+export const Basic = (args) => (
   <Flex gap="4" wrap="wrap" align="center" css={args.css}>
     {Object.keys(circleStyles.variants.size).map((size) => (
       <Circle key={size} size={size}>
@@ -33,7 +20,7 @@ export const basic = (args) => (
   </Flex>
 );
 
-basic.args = {
+Basic.args = {
   css: {
     ".sui-circle": {
       fontWeight: "bold",
