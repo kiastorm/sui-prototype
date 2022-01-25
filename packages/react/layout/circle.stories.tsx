@@ -3,7 +3,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 
 const config: Meta = {
-  title: "Design System/Circle",
+  title: "Layout/Circle",
   component: Circle,
   argTypes: false,
 };

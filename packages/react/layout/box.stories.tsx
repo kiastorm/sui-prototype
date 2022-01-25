@@ -2,7 +2,7 @@ import { Story } from "@storybook/react";
 import { Box } from ".";
 
 const config = {
-  title: "Design System/Box",
+  title: "Layout/Box",
   component: Box,
   argTypes: {
     as: {
@@ -28,7 +28,6 @@ const Template: Story = (props: any) => <Box {...props} />;
 export const Basic = Template.bind({});
 
 Basic.args = {
-  as: "marquee",
   css: {
     bgc: "$neutral200",
     color: "$neutral800",

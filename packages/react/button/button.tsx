@@ -12,7 +12,7 @@ const BUTTON_NAME = "Button";
 type ButtonElement = React.ElementRef<typeof Primitive.button>;
 
 interface ButtonProps
-  extends Radix.ComponentPropsWithoutRef<typeof StyledButton> {
+  extends React.ComponentPropsWithoutRef<typeof StyledButton> {
   /**
    * If `true`, the button will show a spinner.
    */

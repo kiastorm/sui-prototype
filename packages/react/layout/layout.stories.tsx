@@ -1,12 +1,10 @@
-import { Box, Circle, Flex, Kbd, Spacer, Square } from ".";
+import { Box, Circle, Flex, Spacer, Square } from ".";
 
 export const circle = () => (
   <Circle size="9" css={{ backgroundColor: "$cyan800" }}>
     Circle
   </Circle>
 );
-
-export const kbd = () => <Kbd>Ctrl + L</Kbd>;
 
 export const spacer = () => (
   <Flex>

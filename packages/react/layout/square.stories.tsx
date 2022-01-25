@@ -3,7 +3,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 
 const config: Meta<React.ComponentProps<typeof Square>> = {
-  title: "Design System/Square",
+  title: "Layout/Square",
   component: Square,
   subcomponents: { Circle },
   argTypes: {

@@ -3,9 +3,14 @@ import { cx } from "../../core/utils";
 import React from "react";
 
 /**
- * `Flex` provides shorthand props for common flexbox css properties. It renders a `div` element with `display: flex` applied.
- * The `gap` prop is particularly useful for adding spacing between flex items.
+ * A spacer component that can be used to space out elements in a flex container.
  */
+export const Spacer = styled("div", {
+  flex: 1,
+  justifySelf: "stretch",
+  alignSelf: "stretch",
+});
+
 export const flexStyles = {
   boxSizing: "border-box",
   display: "flex",
@@ -121,8 +126,12 @@ export const flexStyles = {
 
 export const flex = css(flexStyles);
 
-export const StyledFlex = styled("div", flexStyles);
+const StyledFlex = styled("div", flexStyles);
 
+/**
+ * `Flex` provides shorthand props for common flexbox css properties. It renders a `div` element with `display: flex` applied.
+ * The `gap` prop is particularly useful for adding spacing between flex items.
+ */
 export const Flex = React.forwardRef((props, forwardedRef) => (
   <StyledFlex
     ref={forwardedRef}

@@ -3,7 +3,7 @@ import { Meta } from "@storybook/react";
 import React from "react";
 
 const config: Meta<React.ComponentProps<typeof Flex>> = {
-  title: "Design System/Flex",
+  title: "Layout/Flex",
   component: Flex,
   subcomponents: { Box },
   argTypes: {
