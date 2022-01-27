@@ -1,6 +1,41 @@
 import { css, styled } from "../react-stitches";
 import { cx } from "../../core/utils";
 import React from "react";
+import merge from "lodash.merge";
+
+/**
+ * `Flex` provides shorthand props for common flexbox css properties.
+ *
+ * It renders a `div` element with `display: flex` applied.
+ *
+ * The `gap` prop is particularly useful for adding spacing between flex items.
+ */
+export const Flex = React.forwardRef((props, forwardedRef) => (
+  <StyledFlex
+    ref={forwardedRef}
+    className={cx("sui-flex", props.className)}
+    {...props}
+  />
+)) as typeof StyledFlex;
+
+Flex.displayName = "Flex";
+
+/**
+ * `InlineFlex` provides shorthand props for common flexbox css properties.
+ *
+ * It renders a `div` element with `display: inline-flex` applied.
+ *
+ * The `gap` prop is particularly useful for adding spacing between flex items.
+ */
+export const InlineFlex = React.forwardRef((props, forwardedRef) => (
+  <StyledInlineFlex
+    ref={forwardedRef}
+    className={cx("sui-inline-flex", props.className)}
+    {...props}
+  />
+)) as typeof StyledInlineFlex;
+
+InlineFlex.displayName = "InlineFlex";
 
 /**
  * A spacer component that can be used to space out elements in a flex container.
@@ -12,8 +47,8 @@ export const Spacer = styled("div", {
 });
 
 export const flexStyles = {
-  boxSizing: "border-box",
   display: "flex",
+  boxSizing: "border-box",
   variants: {
     /**
      * Shorthand prop for `flex-direction` css attribute.
@@ -124,20 +159,9 @@ export const flexStyles = {
   },
 } as const;
 
+const inlineFlexStyles = merge(flexStyles, { display: "inline-flex" });
+
 export const flex = css(flexStyles);
 
 const StyledFlex = styled("div", flexStyles);
-
-/**
- * `Flex` provides shorthand props for common flexbox css properties. It renders a `div` element with `display: flex` applied.
- * The `gap` prop is particularly useful for adding spacing between flex items.
- */
-export const Flex = React.forwardRef((props, forwardedRef) => (
-  <StyledFlex
-    ref={forwardedRef}
-    className={cx("sui-flex", props.className)}
-    {...props}
-  />
-)) as typeof StyledFlex;
-
-Flex.displayName = "Flex";
+const StyledInlineFlex = styled("div", inlineFlexStyles);

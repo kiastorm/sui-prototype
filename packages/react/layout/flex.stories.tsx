@@ -5,20 +5,11 @@ import React from "react";
 const config: Meta<React.ComponentProps<typeof Flex>> = {
   title: "Layout/Flex",
   component: Flex,
-  subcomponents: { Box },
   argTypes: {
     ref: {
       table: {
         type: null,
         disable: true,
-      },
-    },
-    as: {
-      control: "text",
-      description: "What element to render as",
-      table: {
-        type: null,
-        defaultValue: { summary: "div" },
       },
     },
     css: {

@@ -93,7 +93,6 @@ export const squareStyles = {
   },
   defaultVariants: {
     shouldCenterContent: true,
-
     size: "4",
   },
 };

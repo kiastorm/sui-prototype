@@ -21,14 +21,13 @@ export const ButtonSpinner: React.FC<ButtonSpinnerProps> = (props) => {
 
   const _className = cx("button__spinner", className);
 
-  const marginProp = placement === "start" ? "marginEnd" : "marginStart";
+  const marginProp = placement === "start" ? "mr" : "ml";
 
   const spinnerStyles: CSS = React.useMemo(
     () => ({
       display: "flex",
-      alignItems: "center",
-      position: label ? "relative" : "absolute",
-      [marginProp]: label ? "0.5rem" : 0,
+      alignItems: "start",
+      [marginProp]: "0.5rem",
       fontSize: "1em",
       lineHeight: "normal",
       ...css,
@@ -36,11 +35,7 @@ export const ButtonSpinner: React.FC<ButtonSpinnerProps> = (props) => {
     [css, label, marginProp]
   );
 
-  return (
-    <Box className={_className} {...rest} css={spinnerStyles}>
-      {children}
-    </Box>
-  );
+  return children;
 };
 if (__DEV__) {
   ButtonSpinner.displayName = "ButtonSpinner";

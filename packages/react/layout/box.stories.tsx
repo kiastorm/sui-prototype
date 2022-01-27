@@ -5,10 +5,6 @@ const config = {
   title: "Layout/Box",
   component: Box,
   argTypes: {
-    as: {
-      control: "text",
-      description: "What element to render as",
-    },
     ref: {
       table: {
         disable: true,

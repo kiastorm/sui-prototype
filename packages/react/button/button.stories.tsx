@@ -1,145 +1,337 @@
-import { Flex } from "../layout";
-import { Button, buttonVariants } from ".";
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from "@storybook/addon-docs";
+import { useEffect } from "@storybook/addons";
+import React from "react";
+import { button, Button, ButtonAsLink, buttonStyles } from ".";
+import { InlineFlex, Flex, Container } from "../layout";
+import { useBooleanToggleLoop } from "../react-utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaEnvelope, FaPhone, FaPlus, FaTwitter } from "react-icons/fa";
+import { Meta } from "@storybook/react";
 
-export const Basic = () => (
-  <>
-    {Object.keys(buttonVariants.variant).map(
-      (variant: keyof typeof buttonVariants["variant"]) => {
-        return (
-          <Flex gap="3">
-            <Flex
-              gap="6"
-              css={{
-                flexDirection: "column",
-                p: "$6",
-              }}
-            >
-              <Flex gap="3">
-                <Button variant={variant}>Button</Button>
-                <Button variant={variant} size="2">
-                  Button
-                </Button>
-                <Button variant={variant} size="3">
-                  Button
-                </Button>
-              </Flex>
-              <Flex gap="3">
-                <Button variant={variant} disabled>
-                  Button
-                </Button>
-                <Button variant={variant} disabled size="2">
-                  Button
-                </Button>
-                <Button variant={variant} disabled size="3">
-                  Button
-                </Button>
-              </Flex>
-            </Flex>
-            <Flex
-              gap="6"
-              css={{
-                flexDirection: "column",
-                p: "$6",
-                backgroundColor: "black",
-              }}
-            >
-              <Flex gap="3">
-                <Button variant={variant}>Button</Button>
-                <Button variant={variant} size="2">
-                  Button
-                </Button>
-                <Button variant={variant} size="3">
-                  Button
-                </Button>
-              </Flex>
-              <Flex gap="3">
-                <Button variant={variant} disabled>
-                  Button
-                </Button>
-                <Button variant={variant} disabled size="2">
-                  Button
-                </Button>
-                <Button variant={variant} disabled size="3">
-                  Button
-                </Button>
-              </Flex>
-            </Flex>
-          </Flex>
-        );
-      }
-    )}
-  </>
+const config: Meta<React.ComponentProps<typeof Button>> = {
+  title: "Forms/Button",
+  component: Button,
+  argTypes: {
+    ref: {
+      table: {
+        type: null,
+        disable: true,
+      },
+    },
+
+    css: {
+      control: "object",
+      table: {
+        type: null,
+      },
+      description: "Theme-aware CSS",
+    },
+    ...Object.keys(buttonStyles.variants).reduce((prev, current) => {
+      prev[current] = {
+        control: "string",
+        table: {
+          // type: null,
+          ...(buttonStyles.defaultVariants[current]
+            ? {
+                defaultValue: {
+                  summary: buttonStyles.defaultVariants[current],
+                },
+              }
+            : {}),
+        },
+      };
+
+      return prev;
+    }, {}),
+  },
+};
+
+export default config;
+
+export const Variants = () => (
+  <Container css={{ py: "$4" }}>
+    <InlineFlex gap={4}>
+      <Button variant="primary">Button</Button>
+      <Button variant="secondary">Button</Button>
+      <Button variant="ghost-primary">Button</Button>
+      <Button variant="ghost-secondary">Button</Button>
+    </InlineFlex>
+  </Container>
+);
+
+export const RenderAsLink = () => (
+  <Container css={{ py: "$4" }}>
+    <Flex gap={4}>
+      <ButtonAsLink variant="primary" href="javascript:;">
+        Button
+      </ButtonAsLink>
+      <ButtonAsLink variant="secondary" href="javascript:;">
+        Button
+      </ButtonAsLink>
+      <ButtonAsLink variant="ghost-primary" href="javascript:;">
+        Button
+      </ButtonAsLink>
+      <ButtonAsLink variant="ghost-secondary" href="javascript:;">
+        Button
+      </ButtonAsLink>
+    </Flex>
+  </Container>
+);
+export const Disabled = () => (
+  <Container css={{ py: "$4" }}>
+    <InlineFlex gap={4}>
+      <Button isDisabled variant="primary">
+        Button
+      </Button>
+      <Button isDisabled variant="secondary">
+        Button
+      </Button>
+      <Button isDisabled variant="ghost-primary">
+        Button
+      </Button>
+      <Button isDisabled variant="ghost-secondary">
+        Button
+      </Button>
+    </InlineFlex>
+  </Container>
+);
+
+export const Loading = () => {
+  const isLoadingToggleLoop = useBooleanToggleLoop(true);
+  const isLoading = true;
+
+  return (
+    <Container css={{ py: "$4" }}>
+      <Flex gap={4} direction="column">
+        <InlineFlex gap={4}>
+          <Button isLoading variant="primary">
+            Action
+          </Button>
+          <Button isLoading variant="secondary">
+            Action
+          </Button>
+          <Button isLoading variant="ghost-primary">
+            Action
+          </Button>
+          <Button isLoading variant="ghost-secondary">
+            Action
+          </Button>
+        </InlineFlex>
+        <InlineFlex gap={4}>
+          <Button spinnerPlacement="end" isLoading variant="primary">
+            Action
+          </Button>
+          <Button spinnerPlacement="end" isLoading variant="secondary">
+            Action
+          </Button>
+          <Button spinnerPlacement="end" isLoading variant="ghost-primary">
+            Action
+          </Button>
+          <Button spinnerPlacement="end" isLoading variant="ghost-secondary">
+            Action
+          </Button>
+        </InlineFlex>
+
+        <InlineFlex gap={4}>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="primary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="secondary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="ghost-primary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="ghost-secondary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+        </InlineFlex>
+
+        <InlineFlex gap={4}>
+          <Button
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="primary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="secondary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="ghost-primary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            isLoading={isLoadingToggleLoop}
+            loadingText="Loading..."
+            variant="ghost-secondary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+        </InlineFlex>
+
+        <InlineFlex gap={4}>
+          <Button
+            spinnerPlacement="start"
+            isLoading={isLoadingToggleLoop}
+            variant="primary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="start"
+            isLoading={isLoadingToggleLoop}
+            variant="secondary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="start"
+            isLoading={isLoadingToggleLoop}
+            variant="ghost-primary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="start"
+            isLoading={isLoadingToggleLoop}
+            variant="ghost-secondary"
+            rightIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+        </InlineFlex>
+
+        <InlineFlex gap={4}>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            variant="primary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            variant="secondary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            variant="ghost-primary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+          <Button
+            spinnerPlacement="end"
+            isLoading={isLoadingToggleLoop}
+            variant="ghost-secondary"
+            leftIcon={<FaPlus />}
+          >
+            Action
+          </Button>
+        </InlineFlex>
+      </Flex>
+    </Container>
+  );
+};
+
+/**
+ * `isActive` is useful for dropdown menus
+ */
+export const Active = () => (
+  <Container css={{ py: "$4" }}>
+    <InlineFlex gap={4}>
+      <Button isActive variant="primary">
+        Button
+      </Button>
+      <Button isActive variant="secondary">
+        Button
+      </Button>
+      <Button isActive variant="ghost-primary">
+        Button
+      </Button>
+      <Button isActive variant="ghost-secondary">
+        Button
+      </Button>
+    </InlineFlex>
+  </Container>
 );
 
 export const WithIcon = () => (
-  <Flex gap={4}>
-    <Button leftIcon={<div>icon</div>}>Email</Button>
-    <Button rightIcon={<div>icon</div>}>Call us</Button>
-  </Flex>
-);
-
-export const withReactIcons = () => (
-  <Flex direction="row" gap={4} align="center">
-    <Button leftIcon={<div>icon</div>}>Settings</Button>
-    <Button rightIcon={<div>icon</div>}>Call us</Button>
-  </Flex>
-);
-
-export const WithLoading = () => (
-  <Flex gap={4} align="center">
-    <Button size="lg" isLoading>
-      Email
-    </Button>
-
-    <Button isLoading spinner={<div>icon</div>}>
-      Click me
-    </Button>
-
-    <Button isLoading loadingText="Submitting...">
-      Submit
-    </Button>
-  </Flex>
-);
-
-export const WithLoadingSpinnerPlacement = () => (
-  <Flex direction="row" gap={4} align="center">
-    <Button isLoading loadingText="Loading" spinnerPosition="start">
-      Submit
-    </Button>
-    <Button isLoading loadingText="Loading" spinnerPlacement="end">
-      Continue
-    </Button>
-  </Flex>
-);
-
-export const withDisabled = () => (
-  <Flex gap={4}>
-    <Button isDisabled>Button</Button>
-    <Button isDisabled>Button</Button>
-    <Button isDisabled>Button</Button>
-    <Button isDisabled>Button</Button>
-  </Flex>
-);
-
-export const customComposition = () => (
-  <Button
-    css={{
-      size: "md",
-      height: "48px",
-      width: "200px",
-      border: "5px solid",
-      borderColor: "yellow",
-    }}
-  >
-    Button
-  </Button>
+  <Container css={{ py: "$4" }}>
+    <InlineFlex direction="column" gap={4}>
+      <InlineFlex gap={4}>
+        <Button leftIcon={<FaEnvelope />}>Email</Button>
+        <Button rightIcon={<FaPhone />}>Call us</Button>
+      </InlineFlex>
+      <InlineFlex gap={4}>
+        <Button variant="secondary" leftIcon={<FaEnvelope />}>
+          Email
+        </Button>
+        <Button variant="secondary" rightIcon={<FaPhone />}>
+          Call us
+        </Button>
+      </InlineFlex>
+      <InlineFlex gap={4}>
+        <Button variant="ghost-primary" leftIcon={<FaEnvelope />}>
+          Email
+        </Button>
+        <Button variant="ghost-primary" rightIcon={<FaPhone />}>
+          Call us
+        </Button>
+      </InlineFlex>
+      <InlineFlex gap={4}>
+        <Button variant="ghost-secondary" leftIcon={<FaEnvelope />}>
+          Email
+        </Button>
+        <Button variant="ghost-secondary" rightIcon={<FaPhone />}>
+          Call us
+        </Button>
+      </InlineFlex>
+    </InlineFlex>
+  </Container>
 );

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React from "react";
 
 type InitialState = boolean | (() => boolean);
 
@@ -7,20 +7,38 @@ type InitialState = boolean | (() => boolean);
  *
  * @param initialState the initial boolean state value
  */
-export function useBoolean(initialState: InitialState = false) {
-  const [value, setValue] = useState(initialState);
+export const useBoolean = (initialState: InitialState = false) => {
+  const [value, setValue] = React.useState(initialState);
 
-  const on = useCallback(() => {
+  const on = React.useCallback(() => {
     setValue(true);
   }, []);
 
-  const off = useCallback(() => {
+  const off = React.useCallback(() => {
     setValue(false);
   }, []);
 
-  const toggle = useCallback(() => {
+  const toggle = React.useCallback(() => {
     setValue((prev) => !prev);
   }, []);
 
   return [value, { on, off, toggle }] as const;
-}
+};
+
+export const useBooleanToggleLoop = (
+  initialState: InitialState = false,
+  timeout: number = 2500
+) => {
+  const [boolean, setBoolean] = useBoolean(initialState);
+  function toggleBooleanLoop() {
+    setTimeout(function () {
+      setBoolean.toggle();
+      toggleBooleanLoop();
+    }, timeout);
+  }
+  React.useEffect(() => {
+    toggleBooleanLoop();
+  }, []);
+
+  return boolean;
+};

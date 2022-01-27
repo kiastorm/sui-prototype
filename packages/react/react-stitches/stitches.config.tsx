@@ -2,7 +2,7 @@ import type * as Stitches from "@stitches/react";
 import { createStitches } from "@stitches/react";
 import { omit } from "../../core/utils";
 
-export type { VariantProps } from "@stitches/react";
+export type { ComponentProps, VariantProps } from "@stitches/react";
 export type CSS = Stitches.CSS<typeof config>;
 
 export interface ThemingProps {
@@ -82,53 +82,54 @@ export const {
       whiteA2: "rgba(255, 255, 255, 0.2)",
     },
     fonts: {
-      untitled:
-        "Public Sans, Untitled Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      sans: "Lato, Untitled Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
       mono: "Söhne Mono, menlo, monospace",
     },
     space: {
-      1: "4px",
-      2: "8px",
-      3: "12px",
-      4: "16px",
-      5: "20px",
-      6: "24px",
-      7: "28px",
-      8: "32px",
-      9: "36px",
-      10: "40px",
-      11: "44px",
-      12: "48px",
-      13: "52px",
-      14: "56px",
-      15: "60px",
-      16: "64px",
-      17: "68px",
-      18: "72px",
-      19: "76px",
-      20: "80px",
+      0: 0,
+      1: "0.25rem", // 4px
+      2: "0.50rem", // 8px
+      3: "0.75rem", // 12px
+      4: "1rem", // 16px
+      5: "1.25rem", // 20px
+      6: "1.5rem", // 24px
+      7: "1.75rem", // 28px
+      8: "2rem", // 32px
+      9: "2.25rem", // 36px
+      10: "2.5rem",
+      11: "2.75rem",
+      12: "3rem",
+      13: "3.25rem",
+      14: "3.5rem",
+      15: "3.75rem",
+      16: "4rem",
+      17: "5.25rem",
+      18: "5.5rem",
+      19: "5.75rem",
+      20: "6rem",
     },
     sizes: {
-      1: "4px",
-      2: "8px",
-      3: "12px",
-      4: "16px",
-      5: "20px",
-      6: "24px",
-      7: "28px",
-      8: "32px",
-      9: "36px",
-      10: "40px",
-      11: "44px",
-      12: "48px",
-      13: "52px",
-      14: "56px",
-      15: "60px",
-      16: "64px",
-      17: "68px",
-      18: "72px",
-      19: "76px",
-      20: "80px",
+      0: 0,
+      1: "0.25rem", // 4px
+      2: "0.50rem", // 8px
+      3: "0.75rem", // 12px
+      4: "1rem", // 16px
+      5: "1.25rem", // 20px
+      6: "1.5rem", // 24px
+      7: "1.75rem", // 28px
+      8: "2rem", // 32px
+      9: "2.25rem", // 36px
+      10: "2.5rem",
+      11: "2.75rem",
+      12: "3rem",
+      13: "3.25rem",
+      14: "3.5rem",
+      15: "3.75rem",
+      16: "4rem",
+      17: "5.25rem",
+      18: "5.5rem",
+      19: "5.75rem",
+      20: "6rem",
     },
     fontSizes: {
       1: "11px",

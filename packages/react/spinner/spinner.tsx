@@ -59,7 +59,7 @@ type SpinnerElement = React.ElementRef<typeof Box>;
 export const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>(
   (props, ref) => {
     const {
-      label = "Loading...",
+      label = "Waiting...",
       thickness = "2px",
       speed = "0.45s",
       emptyColor = "transparent",
@@ -77,8 +77,8 @@ export const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>(
       borderWidth: thickness,
       borderBottomColor: emptyColor,
       borderLeftColor: emptyColor,
-      width: "1em",
-      height: "1em",
+      width: "100%",
+      height: "100%",
       animation: `${spin} ${speed} linear infinite`,
     };
 

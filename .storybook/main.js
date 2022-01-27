@@ -3,7 +3,7 @@ module.exports = {
     "../packages/**/*.stories.mdx",
     "../packages/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  staticDir: ["../public"],
+  staticDirs: ["../public"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-storysource",

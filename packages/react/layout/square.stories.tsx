@@ -7,13 +7,6 @@ const config: Meta<React.ComponentProps<typeof Square>> = {
   component: Square,
   subcomponents: { Circle },
   argTypes: {
-    as: {
-      control: "text",
-      table: {
-        defaultValue: !!squareStyles.defaultVariants.shouldCenterContent,
-      },
-      description: "What element to render as",
-    },
     ref: {
       table: {
         disable: true,

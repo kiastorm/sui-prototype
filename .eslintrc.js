@@ -17,6 +17,7 @@ module.exports = {
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
     "prettier/prettier": "error",
+    "storybook/default-exports": "off",
     "@typescript-eslint/no-explicit-any": "off",
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],

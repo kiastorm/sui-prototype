@@ -1,20 +1,27 @@
-import type * as Radix from "@radix-ui/react-primitive";
-import { Primitive } from "@radix-ui/react-primitive";
-import { AccessibleIcon } from "../icon";
-import { styled } from "../react-stitches";
+import { Spinner } from "../spinner";
 import * as React from "react";
 import { cx, dataAttr } from "../../core/utils";
+import { AccessibleIcon } from "../icon";
+import { ComponentProps } from "../react-stitches";
 import { ButtonSpinner } from "./button-spinner";
-import { StyledButton } from "./button.styles";
+import { StyledButton, StyledButtonAsLink } from "./button.styles";
+import { Square } from "../layout";
 
-const BUTTON_NAME = "Button";
-
-type ButtonElement = React.ElementRef<typeof Primitive.button>;
+type ButtonElement = React.ElementRef<typeof StyledButton>;
+type ButtonAsLinkElement = React.ElementRef<typeof StyledButtonAsLink>;
 
 interface ButtonProps
-  extends React.ComponentPropsWithoutRef<typeof StyledButton> {
+  extends Omit<ComponentProps<typeof StyledButton>, "active" | "disabled"> {
   /**
-   * If `true`, the button will show a spinner.
+   * If added, the button will show an icon before the button's label.
+   */
+  leftIcon?: React.ReactElement;
+  /**
+   * If added, the button will show an icon after the button's label.
+   */
+  rightIcon?: React.ReactElement;
+  /**
+   * If `true`, the button will render in its loading state.
    */
   isLoading?: boolean;
   /**
@@ -35,41 +42,22 @@ interface ButtonProps
    */
   type?: "button" | "reset" | "submit";
   /**
-   * If added, the button will show an icon before the button's label.
-   */
-  leftIcon?: React.ReactElement;
-  /**
-   * If added, the button will show an icon after the button's label.
-   */
-  rightIcon?: React.ReactElement;
-  /**
    * Replace the spinner component when `state === 'loading'`.
    */
   spinner?: React.ReactElement;
   /**
-   * Determines the placement of the spinner when isLoading is true
+   * Determines the placement of the spinner when isLoading is true.
+   * Will hide spinner if false
    * @default "start"
    */
-  spinnerPlacement?: "start" | "end";
+  spinnerPlacement?: "start" | "end" | false;
 }
 
-type ButtonContentProps = Pick<
-  ButtonProps,
-  "leftIcon" | "rightIcon" | "children"
->;
-
-function ButtonContent(props: ButtonContentProps) {
-  const { leftIcon, rightIcon, children } = props;
-
-  return (
-    <>
-      {leftIcon && <AccessibleIcon label="">{leftIcon}</AccessibleIcon>}
-      {children}
-      {rightIcon && <AccessibleIcon label="">{rightIcon}</AccessibleIcon>}
-    </>
-  );
-}
-
+/**
+ * `Button`s are used to trigger actions and render a `button`.
+ *
+ * Noteable props: `isLoading`, `loadingText`, `isActive`, `isDisabled`, `leftIcon`, `rightIcon`
+ */
 export const Button = React.forwardRef<ButtonElement, ButtonProps>(
   (props, ref) => {
     const {
@@ -80,57 +68,82 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
       loadingText,
       leftIcon,
       rightIcon,
-      spinner,
+      spinner = <ButtonSpinner placement="end" />,
       spinnerPlacement = "start",
       children,
       type,
       ...rest
     } = props;
 
-    const contentProps = { rightIcon, leftIcon, children };
-
     return (
       <StyledButton
         ref={ref}
-        className={cx("button", className)}
+        className={cx("sui-button", className)}
         disabled={isDisabled || isLoading}
         type={type ?? "button"}
         data-active={dataAttr(isActive)}
         data-loading={dataAttr(isLoading)}
+        active={isActive}
         {...rest}
       >
-        {isLoading && spinnerPlacement === "start" && (
-          <ButtonSpinner
-            className="button__spinner--start"
-            label={loadingText}
-            placement="start"
-          >
-            {spinner}
-          </ButtonSpinner>
-        )}
-
-        {isLoading ? (
-          loadingText || (
-            <span style={{ opacity: 0 }}>
-              <ButtonContent {...contentProps} />
-            </span>
-          )
+        {isLoading && spinnerPlacement === "start" ? (
+          <Square className="button__icon--start">
+            <Spinner label={loadingText}>{spinner}</Spinner>
+          </Square>
         ) : (
-          <ButtonContent {...contentProps} />
+          leftIcon && (
+            <Square className="button__icon--start">{leftIcon}</Square>
+          )
         )}
 
-        {isLoading && spinnerPlacement === "end" && (
-          <ButtonSpinner
-            className="button__spinner--end"
-            label={loadingText}
-            placement="end"
-          >
-            {spinner}
-          </ButtonSpinner>
+        {isLoading && loadingText ? loadingText : children}
+
+        {isLoading && spinnerPlacement === "end" ? (
+          <Square className="button__icon--end">
+            <Spinner label={loadingText}>{spinner}</Spinner>
+          </Square>
+        ) : (
+          rightIcon && (
+            <Square className="button__icon--end">{rightIcon}</Square>
+          )
         )}
       </StyledButton>
     );
   }
 );
 
-Button.displayName = BUTTON_NAME;
+Button.displayName = "Button";
+
+export const ButtonAsLink = React.forwardRef<
+  ButtonAsLinkElement,
+  ButtonAsLinkProps
+>((props, ref) => {
+  const { className, leftIcon, rightIcon, children, type, ...rest } = props;
+
+  return (
+    <StyledButtonAsLink
+      ref={ref}
+      className={cx("button-as-link", className)}
+      {...rest}
+    >
+      {leftIcon && <AccessibleIcon label="">{leftIcon}</AccessibleIcon>}
+      {children}
+      {rightIcon && <AccessibleIcon label="">{rightIcon}</AccessibleIcon>}
+    </StyledButtonAsLink>
+  );
+});
+
+ButtonAsLink.displayName = "ButtonAsLink";
+
+type HTMLButtonProps =
+  | "isActive"
+  | "isDisabled"
+  | "isLoading"
+  | "type"
+  | "loadingText"
+  | "spinner"
+  | "spinnerPlacement";
+
+interface ButtonAsLinkProps
+  extends ComponentProps<typeof StyledButtonAsLink>,
+    Omit<ButtonProps, HTMLButtonProps> {}
