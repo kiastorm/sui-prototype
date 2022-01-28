@@ -3,9 +3,6 @@
   "display": "React Library",
   "extends": "./base.json",
   "compilerOptions": {
-    "paths": {
-      "*": ["node_modules/*"]
-    },
     "lib": ["dom", "ES2015"],
     "module": "ESNext",
     "target": "ES6",

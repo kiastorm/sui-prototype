@@ -1,1 +1,0 @@
-Bifrost don't use TypeScript and may be less active here to begin with but over time we'd want to aim for all UI (and future UI projects) to go through the design system, so this is being placed here as an example.

@@ -1,67 +1,51 @@
 {
-  "name": "turborepo-design-system",
+  "name": "sui",
   "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "packages/core/*",
-    "packages/react/*",
-    "packages/application-specific/*",
-    "docs"
-  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue",
-    "storybook": "start-storybook -p 9009 --ci",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=8f12b25456bd",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "eslint --ext .ts,.tsx,.md --ignore-path .gitignore --ignore-pattern \"node_modules\" ."
   },
   "devDependencies": {
-    "@singlestore-ui/core": "*",
-    "@singlestore-ui/react-accessible-icon": "*",
-    "@singlestore-ui/react-button": "*",
-    "@singlestore-ui/react-layout": "*",
-    "@singlestore-ui/react-spinner": "*",
-    "@singlestore-ui/react-utils": "*",
-    "@singlestore-ui/react-visually-hidden": "*",
-    "@singlestore-ui/utils": "*",
-    "@storybook/addon-storysource": "^6.4.13",
+    "@babel/core": "^7.16.12",
+    "@radix-ui/react-accessible-icon": "^0.1.3",
+    "@stitches/core": "^1.2.6",
+    "@stitches/react": "^1.2.6",
+    "@storybook/addon-actions": "^6.4.14",
+    "@storybook/addon-docs": "^6.4.13",
+    "@storybook/addon-essentials": "^6.4.14",
+    "@storybook/addon-links": "^6.4.14",
+    "@storybook/addon-storysource": "^6.4.14",
     "@storybook/addons": "^6.4.13",
-    "@storybook/react": "^6.4.13",
+    "@storybook/components": "^6.4.14",
+    "@storybook/react": "^6.4.14",
     "@storybook/theming": "^6.4.13",
-    "eslint": "7.32.0",
+    "@types/lodash.merge": "^4.6.6",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "babel-loader": "^8.2.3",
+    "chromatic": "^6.4.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-storybook": "^0.5.6",
+    "i": "^0.3.7",
+    "npm": "^8.3.2",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "turbo": "latest"
+    "react-dom": "^17.0.2"
   },
-  "turbo": {
-    "pipeline": {
-      "build": {
-        "outputs": [
-          "dist/**",
-          ".next/**"
-        ],
-        "dependsOn": [
-          "^build"
-        ]
-      },
-      "test": {
-        "outputs": [
-          "coverage/**"
-        ],
-        "dependsOn": []
-      },
-      "lint": {
-        "outputs": []
-      },
-      "dev": {
-        "cache": false
-      },
-      "clean": {
-        "cache": false
-      }
-    }
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@radix-ui/react-primitive": "^0.1.3",
+    "lodash.merge": "^4.6.2",
+    "react-icons": "^4.3.1",
+    "typescript": "^4.5.5"
   }
 }
