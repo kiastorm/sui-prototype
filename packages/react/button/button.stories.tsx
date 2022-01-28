@@ -62,6 +62,8 @@ export const Variants = () => (
     <Button variant="secondary">Button</Button>
     <Button variant="ghost-primary">Button</Button>
     <Button variant="ghost-secondary">Button</Button>
+    {/* Adding extra button to trigger Chromatic */}
+    <Button variant="ghost-secondary">Button</Button>
   </InlineFlex>
 );
 
