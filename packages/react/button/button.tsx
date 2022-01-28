@@ -242,7 +242,7 @@ export const buttonStyles = {
     // Visual style and colour of the button
     variant: {
       primary: {
-        bgc: "$purple900",
+        bgc: "red",
         color: "white",
         "@hover": {
           "&:hover": {
