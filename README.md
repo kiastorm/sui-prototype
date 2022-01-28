@@ -1,1 +1,1 @@
-Welcome
+`pnpm i && pnpm storybook`
