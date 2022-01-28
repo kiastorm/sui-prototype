@@ -4,7 +4,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=8f12b25456bd",
+    "chromatic": "npx chromatic --exit-zero-on-changes",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "eslint --ext .ts,.tsx,.md --ignore-path .gitignore --ignore-pattern \"node_modules\" ."
   },
