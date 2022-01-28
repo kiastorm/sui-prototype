@@ -169,6 +169,7 @@ export const buttonStyles = {
   "&::after": {
     boxSizing: "border-box",
   },
+  border: "1px solid transparent",
 
   // Custom reset?
   display: "inline-flex",
@@ -250,13 +251,11 @@ export const buttonStyles = {
         },
         "&:focus": {
           background: "$purple900",
-          boxShadow:
-            "inset 0 0 0 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+          boxShadow: "0px 0px 0px 2px $colors$purple400",
         },
         "&:active": {
           background: "$purple800",
-          boxShadow:
-            "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+          boxShadow: "0px 0px 0px 2px $colors$purple400",
         },
       },
       secondary: {
@@ -269,14 +268,13 @@ export const buttonStyles = {
           },
         },
         "&:focus": {
+          borderColor: "$neutral500",
           background: "$neutral200",
-          boxShadow:
-            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+          boxShadow: "0px 0px 0px 2px $colors$neutral500",
         },
         "&:active": {
           background: "$neutral300",
-          boxShadow:
-            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+          boxShadow: "0px 0px 0px 2px $colors$neutral500",
         },
       },
       "ghost-primary": {
@@ -289,14 +287,13 @@ export const buttonStyles = {
           },
         },
         "&:focus": {
+          borderColor: "$purple400",
           background: "$purple200",
-          boxShadow:
-            "inset 0 0 0 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+          boxShadow: "0px 0px 0px 2px $colors$purple400",
         },
         "&:active": {
           background: "$purple100",
-          boxShadow:
-            "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+          boxShadow: "0px 0px 0px 2px $colors$purple400",
         },
       },
       "ghost-secondary": {
@@ -309,14 +306,13 @@ export const buttonStyles = {
           },
         },
         "&:focus": {
+          borderColor: "$neutral500",
           background: "$neutral200",
-          boxShadow:
-            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+          boxShadow: "0px 0px 0px 2px $colors$neutral500",
         },
         "&:active": {
           background: "$neutral300",
-          boxShadow:
-            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+          boxShadow: "0px 0px 0px 2px $colors$neutral500",
         },
       },
     },
@@ -369,8 +365,7 @@ export const buttonStyles = {
       variant: "primary",
       css: {
         background: "$purple800",
-        boxShadow:
-          "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+        boxShadow: "0px 0px 0px 2px $colors$purple400",
       },
     },
     {
@@ -378,8 +373,7 @@ export const buttonStyles = {
       variant: "secondary",
       css: {
         background: "$neutral300",
-        boxShadow:
-          "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+        boxShadow: "0px 0px 0px 2px $colors$neutral500",
       },
     },
     {
@@ -387,8 +381,8 @@ export const buttonStyles = {
       variant: "ghost-primary",
       css: {
         background: "$purple100",
-        boxShadow:
-          "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+        borderColor: "$purple400",
+        boxShadow: "0px 0px 0px 2px $colors$purple400",
       },
     },
     {
@@ -396,8 +390,8 @@ export const buttonStyles = {
       variant: "ghost-secondary",
       css: {
         background: "$neutral300",
-        boxShadow:
-          "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+        borderColor: "$neutral500",
+        boxShadow: "0px 0px 0px 2px $colors$neutral500",
       },
     },
   ],
