@@ -1,5 +1,5 @@
 {
-  "name": "design-system",
+  "name": "sui",
   "version": "0.0.0",
   "scripts": {
     "storybook": "start-storybook -p 6006",

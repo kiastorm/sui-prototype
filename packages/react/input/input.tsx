@@ -3,7 +3,7 @@ import { cx } from "../../core/utils";
 import { FormControlOptions, useFormControl } from "../form-control";
 import * as React from "react";
 
-export const StyledTextField = styled("input", {
+export const StyledInput = styled("input", {
   // Reset
   appearance: "none",
   borderWidth: "0",
@@ -41,10 +41,10 @@ export const StyledTextField = styled("input", {
   // backgroundColor: "$neutral200",
   color: "$hiContrast",
   fontVariantNumeric: "tabular-nums",
-  boxShadow: "inset 0 0 0 1px $colors$neutral500",
+  border: "1px solid $colors$neutral500",
 
   "&:-webkit-autofill": {
-    boxShadow: "inset 0 0 0 1px $colors$blue6, inset 0 0 0 100px $colors$blue3",
+    boxShadow: "0 0 0 1px $colors$blue6, 0 0 0 100px $colors$blue3",
   },
 
   "&:-webkit-autofill::first-line": {
@@ -55,10 +55,10 @@ export const StyledTextField = styled("input", {
   "&:focus": {
     backgroundColor: "$neutral0",
     boxShadow:
-      "inset 0px 0px 0px 1px $colors$purple600, 0px 0px 0px 1px $colors$purple600",
+      "0px 0px 0px 1px $colors$purple600, 0px 0px 0px 1px $colors$purple600",
     "&:-webkit-autofill": {
       boxShadow:
-        "inset 0px 0px 0px 1px $colors$$colors$purple600, 0px 0px 0px 1px $colors$$colors$purple600, inset 0 0 0 100px $colors$blue3",
+        "0px 0px 0px 1px $colors$$colors$purple600, 0px 0px 0px 1px $colors$$colors$purple600, 0 0 0 100px $colors$blue3",
     },
   },
   "&::placeholder": {
@@ -76,31 +76,37 @@ export const StyledTextField = styled("input", {
   "&:read-only": {
     backgroundColor: "$slate2",
     "&:focus": {
-      boxShadow: "inset 0px 0px 0px 1px $colors$slate7",
+      boxShadow: "0px 0px 0px 1px $colors$slate7",
     },
   },
 
   variants: {
     size: {
       "1": {
-        borderRadius: "$1",
-        height: "$5",
-        fontSize: "$1",
-        px: "$1",
-        lineHeight: "$sizes$5",
-        "&:-webkit-autofill::first-line": {
-          fontSize: "$1",
-        },
+        borderRadius: "$2",
+        height: "$6",
+        minWidth: "$12",
+        px: "$2",
+        fontSize: "$3",
+        lineHeight: "$fontSizes$5",
+        $$iconSize: "$3",
       },
       "2": {
         borderRadius: "$2",
-        height: "$6",
-        fontSize: "$3",
-        px: "$2",
-        lineHeight: "$sizes$6",
-        "&:-webkit-autofill::first-line": {
-          fontSize: "$3",
-        },
+        height: "$8",
+        minWidth: "$16",
+        px: "$4",
+        fontSize: "$5",
+        lineHeight: "$fontSizes$4",
+        $$iconSize: "$4",
+      },
+      "3": {
+        borderRadius: "$2",
+        height: "$9",
+        px: "$6",
+        fontSize: "$5",
+        lineHeight: "$fontSizes$4",
+        $$iconSize: "$4",
       },
     },
     variant: {
@@ -109,13 +115,13 @@ export const StyledTextField = styled("input", {
         backgroundColor: "transparent",
         "@hover": {
           "&:hover": {
-            boxShadow: "inset 0 0 0 1px $colors$slateA7",
+            boxShadow: "0 0 0 1px $colors$slateA7",
           },
         },
         "&:focus": {
           backgroundColor: "$loContrast",
           boxShadow:
-            "inset 0px 0px 0px 1px $colors$$colors$purple600, 0px 0px 0px 1px $colors$$colors$purple600",
+            "0px 0px 0px 1px $colors$$colors$purple600, 0px 0px 0px 1px $colors$$colors$purple600",
         },
         "&:disabled": {
           backgroundColor: "transparent",
@@ -127,17 +133,17 @@ export const StyledTextField = styled("input", {
     },
     state: {
       invalid: {
-        boxShadow: "inset 0 0 0 1px $colors$red7",
+        boxShadow: "0 0 0 1px $colors$red7",
         "&:focus": {
           boxShadow:
-            "inset 0px 0px 0px 1px $colors$red8, 0px 0px 0px 1px $colors$red8",
+            "0px 0px 0px 1px $colors$red8, 0px 0px 0px 1px $colors$red8",
         },
       },
       valid: {
-        boxShadow: "inset 0 0 0 1px $colors$green7",
+        boxShadow: "0 0 0 1px $colors$green7",
         "&:focus": {
           boxShadow:
-            "inset 0px 0px 0px 1px $colors$green8, 0px 0px 0px 1px $colors$green8",
+            "0px 0px 0px 1px $colors$green8, 0px 0px 0px 1px $colors$green8",
         },
       },
     },
@@ -154,28 +160,27 @@ export const StyledTextField = styled("input", {
     },
   },
   defaultVariants: {
-    size: "1",
+    size: "2",
   },
 });
 
-const BUTTON_NAME = "TextField";
+const BUTTON_NAME = "Input";
 type Omitted = "disabled" | "required" | "readOnly" | "size";
 
-type TextFieldElement = React.ElementRef<typeof StyledTextField>;
+type InputElement = React.ElementRef<typeof StyledInput>;
 
-interface TextFieldProps
-  extends Omit<React.ComponentProps<typeof StyledTextField>, Omitted>,
+interface InputProps
+  extends Omit<React.ComponentProps<typeof StyledInput>, Omitted>,
     ThemingProps,
     FormControlOptions {}
 
-export const TextField = React.forwardRef<TextFieldElement, TextFieldProps>(
+export const Input = React.forwardRef<InputElement, InputProps>(
   (props, ref) => {
-    const ownProps = omitThemingProps(props);
-    const inputProps = useFormControl<HTMLInputElement>(props);
-    const _className = cx("chakra-input", props.className);
+    const _className = cx("sui-input", props.className);
 
-    return <StyledTextField ref={ref} {...inputProps} />;
+    return <StyledInput ref={ref} {...props} className={_className} />;
   }
 );
 
-TextField.displayName = BUTTON_NAME;
+Input.displayName = BUTTON_NAME;
+Input.toString = () => ".sui-input";

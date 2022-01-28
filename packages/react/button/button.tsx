@@ -1,11 +1,11 @@
-import { Spinner } from "../spinner";
 import * as React from "react";
 import { cx, dataAttr } from "../../core/utils";
 import { AccessibleIcon } from "../icon";
-import { ComponentProps } from "../react-stitches";
-import { ButtonSpinner } from "./button-spinner";
-import { StyledButton, StyledButtonAsLink } from "./button.styles";
 import { Square } from "../layout";
+import { ComponentProps, css, styled } from "../react-stitches";
+import { Spinner } from "../spinner";
+import { ButtonSpinner } from "./button-spinner";
+import { useButtonGroup } from "./button-group";
 
 type ButtonElement = React.ElementRef<typeof StyledButton>;
 type ButtonAsLinkElement = React.ElementRef<typeof StyledButtonAsLink>;
@@ -60,10 +60,12 @@ interface ButtonProps
  */
 export const Button = React.forwardRef<ButtonElement, ButtonProps>(
   (props, ref) => {
+    const group = useButtonGroup();
+
     const {
-      isLoading,
       isActive,
-      isDisabled,
+      isLoading = group?.isLoading,
+      isDisabled = group?.isDisabled,
       className,
       loadingText,
       leftIcon,
@@ -72,6 +74,8 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
       spinnerPlacement = "start",
       children,
       type,
+      variant = group?.variant,
+      size = group?.size,
       ...rest
     } = props;
 
@@ -84,27 +88,31 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
         data-active={dataAttr(isActive)}
         data-loading={dataAttr(isLoading)}
         active={isActive}
+        variant={variant}
+        size={size}
         {...rest}
       >
         {isLoading && spinnerPlacement === "start" ? (
-          <Square className="button__icon--start">
+          <Square className="sui-button__icon--start">
             <Spinner label={loadingText}>{spinner}</Spinner>
           </Square>
         ) : (
           leftIcon && (
-            <Square className="button__icon--start">{leftIcon}</Square>
+            <Square className="sui-button__icon--start">{leftIcon}</Square>
           )
         )}
 
         {isLoading && loadingText ? loadingText : children}
 
         {isLoading && spinnerPlacement === "end" ? (
-          <Square className="button__icon--end">
+          <Square className="sui-button__icon--end">
             <Spinner label={loadingText}>{spinner}</Spinner>
           </Square>
         ) : (
           rightIcon && (
-            <Square className="button__icon--end">{rightIcon}</Square>
+            <Square className="sui-button__icon--end">
+              <AccessibleIcon>{rightIcon}</AccessibleIcon>
+            </Square>
           )
         )}
       </StyledButton>
@@ -112,6 +120,7 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
   }
 );
 
+Button.toString = () => ".sui-button";
 Button.displayName = "Button";
 
 export const ButtonAsLink = React.forwardRef<
@@ -123,7 +132,7 @@ export const ButtonAsLink = React.forwardRef<
   return (
     <StyledButtonAsLink
       ref={ref}
-      className={cx("button-as-link", className)}
+      className={cx("sui-button-as-link", className)}
       {...rest}
     >
       {leftIcon && <AccessibleIcon label="">{leftIcon}</AccessibleIcon>}
@@ -134,6 +143,7 @@ export const ButtonAsLink = React.forwardRef<
 });
 
 ButtonAsLink.displayName = "ButtonAsLink";
+ButtonAsLink.toString = () => ".sui-button-as-link";
 
 type HTMLButtonProps =
   | "isActive"
@@ -147,3 +157,258 @@ type HTMLButtonProps =
 interface ButtonAsLinkProps
   extends ComponentProps<typeof StyledButtonAsLink>,
     Omit<ButtonProps, HTMLButtonProps> {}
+
+export const buttonStyles = {
+  all: "unset",
+  alignItems: "center",
+  boxSizing: "border-box",
+  userSelect: "none",
+  "&::before": {
+    boxSizing: "border-box",
+  },
+  "&::after": {
+    boxSizing: "border-box",
+  },
+
+  // Custom reset?
+  display: "inline-flex",
+  flexShrink: 0,
+  justifyContent: "center",
+  lineHeight: "1",
+
+  // Custom
+  height: "$5",
+  px: "$2",
+  font: "untitled",
+  fontSize: "$2",
+  fontWeight: 700,
+  cursor: "pointer",
+  "&:disabled": {
+    pointerEvents: "none",
+    opacity: 0.4,
+  },
+
+  $$iconSpacing: "$space$2",
+
+  ".sui-button__icon--start": {
+    mr: "$$iconSpacing",
+    svg: {
+      width: "$$iconSize",
+      height: "$$iconSize",
+    },
+  },
+  ".sui-button__icon--end": {
+    ml: "$$iconSpacing",
+    svg: {
+      width: "$$iconSize",
+      height: "$$iconSize",
+    },
+  },
+  variants: {
+    active: {
+      true: {},
+      false: {},
+    },
+    // Size of the button
+    size: {
+      "1": {
+        borderRadius: "$2",
+        height: "$6",
+        minWidth: "$12",
+        px: "$2",
+        fontSize: "$3",
+        lineHeight: "$fontSizes$5",
+        $$iconSize: "$3",
+      },
+      "2": {
+        borderRadius: "$2",
+        height: "$8",
+        minWidth: "$16",
+        px: "$4",
+        fontSize: "$5",
+        lineHeight: "$fontSizes$4",
+        $$iconSize: "$4",
+      },
+      "3": {
+        borderRadius: "$2",
+        height: "$9",
+        px: "$6",
+        fontSize: "$5",
+        lineHeight: "$fontSizes$4",
+        $$iconSize: "$4",
+      },
+    },
+    // Visual style and colour of the button
+    variant: {
+      primary: {
+        bgc: "$purple900",
+        color: "white",
+        "@hover": {
+          "&:hover": {
+            background: "$purple800",
+          },
+        },
+        "&:focus": {
+          background: "$purple900",
+          boxShadow:
+            "inset 0 0 0 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+        },
+        "&:active": {
+          background: "$purple800",
+          boxShadow:
+            "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+        },
+      },
+      secondary: {
+        bgc: "$neutral0",
+        color: "$neutral800",
+        border: "1px solid $colors$neutral500",
+        "@hover": {
+          "&:hover": {
+            background: "$neutral100",
+          },
+        },
+        "&:focus": {
+          background: "$neutral200",
+          boxShadow:
+            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+        },
+        "&:active": {
+          background: "$neutral300",
+          boxShadow:
+            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+        },
+      },
+      "ghost-primary": {
+        bgc: "transparent",
+        color: "$purple900",
+        minWidth: "unset",
+        "@hover": {
+          "&:hover": {
+            background: "$purple200",
+          },
+        },
+        "&:focus": {
+          background: "$purple200",
+          boxShadow:
+            "inset 0 0 0 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+        },
+        "&:active": {
+          background: "$purple100",
+          boxShadow:
+            "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+        },
+      },
+      "ghost-secondary": {
+        bgc: "transparent",
+        color: "$neutral800",
+        minWidth: "unset",
+        "@hover": {
+          "&:hover": {
+            background: "$neutral100",
+          },
+        },
+        "&:focus": {
+          background: "$neutral200",
+          boxShadow:
+            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+        },
+        "&:active": {
+          background: "$neutral300",
+          boxShadow:
+            "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+        },
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      size: 1,
+      variant: "ghost-primary",
+      css: {
+        px: "$2",
+      },
+    },
+    {
+      size: 2,
+      variant: "ghost-primary",
+      css: {
+        px: "$2",
+      },
+    },
+    {
+      size: 3,
+      variant: "ghost-primary",
+      css: {
+        px: "$2",
+      },
+    },
+    {
+      size: 1,
+      variant: "ghost-secondary",
+      css: {
+        px: "$2",
+      },
+    },
+    {
+      size: 2,
+      variant: "ghost-secondary",
+      css: {
+        px: "$2",
+      },
+    },
+    {
+      size: 3,
+      variant: "ghost-secondary",
+      css: {
+        px: "$2",
+      },
+    },
+    {
+      active: true,
+      variant: "primary",
+      css: {
+        background: "$purple800",
+        boxShadow:
+          "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+      },
+    },
+    {
+      active: true,
+      variant: "secondary",
+      css: {
+        background: "$neutral300",
+        boxShadow:
+          "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+      },
+    },
+    {
+      active: true,
+      variant: "ghost-primary",
+      css: {
+        background: "$purple100",
+        boxShadow:
+          "inset 0px 0px 0px 1px $colors$purple400, 0px 0px 0px 2px $colors$purple400",
+      },
+    },
+    {
+      active: true,
+      variant: "ghost-secondary",
+      css: {
+        background: "$neutral300",
+        boxShadow:
+          "inset 0 0 0 1px $colors$neutral500, 0px 0px 0px 2px $colors$neutral500",
+      },
+    },
+  ],
+  defaultVariants: {
+    variant: "primary",
+    size: "2",
+  },
+};
+
+export const button = css(buttonStyles);
+
+export const StyledButtonAsLink = styled("a", buttonStyles);
+
+export const StyledButton = styled("button", buttonStyles);

@@ -1,29 +1,19 @@
-import type * as Radix from "@radix-ui/react-primitive";
-import { Primitive } from "@radix-ui/react-primitive";
+import { __DEV__ } from "../../core/utils";
+import { Flex } from "../layout";
 import { createContext } from "../react-utils";
-import { cx, __DEV__ } from "../../core/utils";
-import * as React from "react";
-import { ThemingProps } from "../react-stitches";
-import { Button } from "./button";
+import React from "react";
+import { Button } from "../button";
+
+type ForwardedButtonProps = Pick<
+  React.ComponentProps<typeof Button>,
+  "size" | "variant" | "isDisabled" | "isLoading"
+>;
 
 export interface ButtonGroupProps
-  extends Radix.ComponentPropsWithoutRef<typeof Primitive.div>,
-    Pick<React.ComponentProps<typeof Button>, "variant" | "size">,
-    ThemingProps {
-  /**
-   * If `true`, the borderRadius of button that are direct children will be altered
-   * to look flushed together
-   */
-  isAttached?: boolean;
-  /**
-   * If `true`, all wrapped button will be disabled
-   */
-  isDisabled?: boolean;
-}
+  extends React.ComponentProps<typeof Flex>,
+    ForwardedButtonProps {}
 
-interface ButtonGroupContext {
-  isDisabled?: boolean;
-}
+interface ButtonGroupContext extends ForwardedButtonProps {}
 
 const [ButtonGroupProvider, useButtonGroup] = createContext<ButtonGroupContext>(
   {
@@ -34,50 +24,32 @@ const [ButtonGroupProvider, useButtonGroup] = createContext<ButtonGroupContext>(
 
 export { useButtonGroup };
 
+/**
+ * `ButtonGroups` allows you to group and pass the same props to multiple `Button`s.
+ *
+ * - By default, it renders a `Flex` with `role="group"` and `gap={2}` applied.
+ *
+ * - Props applied directly to child `Button`s will override any set by its parent `ButtonGroup`.
+ */
 export const ButtonGroup = React.forwardRef<
-  React.ElementRef<typeof Primitive.div>,
+  React.ElementRef<typeof Flex>,
   ButtonGroupProps
 >((props, ref) => {
-  const { size, color, variant, className, isAttached, isDisabled, ...rest } =
-    props;
-
-  const _className = cx("button__group", className);
+  const { size, variant, className, isDisabled, gap = 2, ...rest } = props;
 
   const context = React.useMemo(
-    () => ({ size, color, variant, isDisabled }),
-    [size, color, variant, isDisabled]
+    () => ({ size, variant, isDisabled }),
+    [size, variant, isDisabled]
   );
-
-  // let groupStyles: CSS = {
-  //   display: "inline-flex",
-  // };
-
-  // if (isAttached) {
-  //   groupStyles = {
-  //     ...groupStyles,
-  //     "> *:first-of-type:not(:last-of-type)": { borderEndRadius: 0 },
-  //     "> *:not(:first-of-type):not(:last-of-type)": { borderRadius: 0 },
-  //     "> *:not(:first-of-type):last-of-type": { borderStartRadius: 0 },
-  //   };
-  // } else {
-  //   groupStyles = {
-  //     ...groupStyles,
-  //     // "& > *:not(style) ~ *:not(style)": { marginStart: spacing },
-  //   };
-  // }
 
   return (
     <ButtonGroupProvider value={context}>
-      <Primitive.div
-        ref={ref}
-        role="group"
-        // __css={groupStyles}
-        className={_className}
-        {...rest}
-      />
+      <Flex ref={ref} role="group" gap={gap} {...rest} />
     </ButtonGroupProvider>
   );
 });
+
+ButtonGroup.toString = () => ".sui-button-group";
 
 if (__DEV__) {
   ButtonGroup.displayName = "ButtonGroup";

@@ -122,6 +122,7 @@ export const flexStyles = {
      * Shorthand prop for `gap`  css attribute.
      */
     gap: {
+      0: {},
       1: {
         gap: "$1",
       },
@@ -159,7 +160,7 @@ export const flexStyles = {
   },
 } as const;
 
-const inlineFlexStyles = merge(flexStyles, { display: "inline-flex" });
+const inlineFlexStyles = merge({}, flexStyles, { display: "inline-flex" });
 
 export const flex = css(flexStyles);
 
