@@ -82,8 +82,8 @@ export const {
       whiteA2: "rgba(255, 255, 255, 0.2)",
     },
     fonts: {
-      sans: "Lato, Untitled Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-      mono: "Söhne Mono, menlo, monospace",
+      sans: "Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      mono: "Inconsolata, Söhne Mono, menlo, monospace",
     },
     space: {
       0: 0,
@@ -132,23 +132,24 @@ export const {
       20: "6rem",
     },
     fontSizes: {
-      1: "11px",
-      2: "12px",
-      3: "13px",
-      4: "14px",
-      5: "15px",
-      6: "16px",
-      7: "20px",
-      8: "22px",
-      9: "24px",
-      10: "34px",
-      11: "48px",
-      12: "59px",
+      1: "0.688rem", // 11px
+      2: "0.75rem", // 12px
+      3: "0.813rem", // 13px
+      4: "0.875rem", // 14px
+      5: "0.938rem", // 15px
+      6: "1rem", // 16px
+      7: "1.125rem", // 18px
+      8: "1.25rem", // 20px
+      9: "1.375rem", // 22px
+      10: "1.5rem", // 24px
+      11: "2.125rem", // 34px
+      12: "3rem", // 48px
+      13: "3.688rem", // 59px
     },
     radii: {
-      1: "2px",
-      2: "4px",
-      3: "8px",
+      1: "0.13rem", // 1px
+      2: "0.26rem", // 2px
+      3: "0.52rem", // 4px
       round: "50%",
       pill: "9999px",
     },

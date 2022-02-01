@@ -4,7 +4,7 @@
   "compilerOptions": {
     "paths": {
       "*": ["node_modules/*"],
-      "@emotion/core": ["./types/index.d.ts"]
+      "@emotion/core": ["./index.d.ts"] // Else `css` prop of `@stitches/react` collides with `css` prop of Storybook's `@emotion/core`
     }
   }
 }

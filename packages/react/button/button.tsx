@@ -10,7 +10,7 @@ import { useButtonGroup } from "./button-group";
 type ButtonElement = React.ElementRef<typeof StyledButton>;
 type ButtonAsLinkElement = React.ElementRef<typeof StyledButtonAsLink>;
 
-interface ButtonProps
+export interface ButtonProps
   extends Omit<ComponentProps<typeof StyledButton>, "active" | "disabled"> {
   /**
    * If added, the button will show an icon before the button's label.
@@ -64,7 +64,7 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
 
     const {
       isActive,
-      isLoading = group?.isLoading,
+      isLoading,
       isDisabled = group?.isDisabled,
       className,
       loadingText,
@@ -74,8 +74,8 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
       spinnerPlacement = "start",
       children,
       type,
-      variant = group?.variant,
-      size = group?.size,
+      variant,
+      size,
       ...rest
     } = props;
 
@@ -111,7 +111,7 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
         ) : (
           rightIcon && (
             <Square className="sui-button__icon--end">
-              <AccessibleIcon>{rightIcon}</AccessibleIcon>
+              <AccessibleIcon label="">{rightIcon}</AccessibleIcon>
             </Square>
           )
         )}
@@ -169,7 +169,7 @@ export const buttonStyles = {
   "&::after": {
     boxSizing: "border-box",
   },
-  border: "1px solid transparent",
+  border: "none",
 
   // Custom reset?
   display: "inline-flex",
@@ -180,7 +180,7 @@ export const buttonStyles = {
   // Custom
   height: "$5",
   px: "$2",
-  font: "untitled",
+  font: "sans",
   fontSize: "$2",
   fontWeight: 700,
   cursor: "pointer",
@@ -215,7 +215,6 @@ export const buttonStyles = {
       "1": {
         borderRadius: "$2",
         height: "$6",
-        minWidth: "$12",
         px: "$2",
         fontSize: "$3",
         lineHeight: "$fontSizes$5",
@@ -224,7 +223,6 @@ export const buttonStyles = {
       "2": {
         borderRadius: "$2",
         height: "$8",
-        minWidth: "$16",
         px: "$4",
         fontSize: "$5",
         lineHeight: "$fontSizes$4",
@@ -241,6 +239,7 @@ export const buttonStyles = {
     },
     // Visual style and colour of the button
     variant: {
+      0: {},
       primary: {
         bgc: "$purple900",
         color: "white",
@@ -280,7 +279,6 @@ export const buttonStyles = {
       "ghost-primary": {
         bgc: "transparent",
         color: "$purple900",
-        minWidth: "unset",
         "@hover": {
           "&:hover": {
             background: "$purple200",
@@ -299,7 +297,6 @@ export const buttonStyles = {
       "ghost-secondary": {
         bgc: "transparent",
         color: "$neutral800",
-        minWidth: "unset",
         "@hover": {
           "&:hover": {
             background: "$neutral100",

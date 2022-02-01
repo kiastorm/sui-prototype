@@ -1,10 +1,11 @@
 import { Meta, Story } from "@storybook/react";
 import { useBooleanToggleLoop } from "../react-utils";
 import React from "react";
-import { Button, buttonStyles } from ".";
+import { Button, IconButton, buttonStyles } from ".";
 import { Container, Flex, flexStyles } from "../layout";
 import { ButtonGroup } from "./button-group";
 import { pick } from "../../core/utils";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 const config: Meta<React.ComponentProps<typeof Button>> = {
   title: "Forms/ButtonGroup",
@@ -90,22 +91,16 @@ export const BasicUsage = () => {
 export const OverrideGroupProps = () => {
   return (
     <>
-      <ButtonGroup
-        variant="secondary"
-        size="3"
-        isDisabled={false}
-        isLoading={false}
-        align="center"
-      >
+      <ButtonGroup isDisabled={true} align="center">
         <Button>No overrides</Button>
+        <IconButton aria-label="No overrides">
+          <FaTimes />
+        </IconButton>
 
-        <Button size="1" variant="primary">
-          Override size and variant
-        </Button>
-
-        <Button isDisabled={true}>Override isDisabled</Button>
-
-        <Button isLoading={true}>Override isLoading</Button>
+        <Button isDisabled={false}>Overrides isDisabled</Button>
+        <IconButton isDisabled={false} aria-label="Overrides isDisabled">
+          <FaCheck />
+        </IconButton>
       </ButtonGroup>
     </>
   );
@@ -118,7 +113,7 @@ export const WithCustomFlexProps = () => (
       <Button>Default</Button>
     </ButtonGroup>
 
-    <ButtonGroup isLoading gap={8}>
+    <ButtonGroup gap={8}>
       <Button variant="secondary">Custom Gap</Button>
       <Button>Custom Gap</Button>
     </ButtonGroup>

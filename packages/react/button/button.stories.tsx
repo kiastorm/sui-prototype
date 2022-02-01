@@ -1,13 +1,21 @@
 import { Meta, Story } from "@storybook/react";
 import { ButtonGroup } from "./button-group";
 import React from "react";
-import { FaEnvelope, FaPhone, FaPlus } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaEllipsisH,
+  FaEllipsisV,
+  FaEnvelope,
+  FaPhone,
+  FaPlus,
+} from "react-icons/fa";
 import { Button, ButtonAsLink, buttonStyles } from ".";
 import { ControlGroup } from "../control-group";
 import { Container, Flex, InlineFlex } from "../layout";
 import { useBooleanToggleLoop } from "../react-utils";
 import { Select } from "../select";
 import { Input } from "../input";
+import { IconButton } from "./icon-button";
 
 const config: Meta<React.ComponentProps<typeof Button>> = {
   title: "Forms/Button",
@@ -56,13 +64,60 @@ const config: Meta<React.ComponentProps<typeof Button>> = {
 
 export default config;
 
-export const Variants = () => (
+export const BasicUsage = () => (
   <InlineFlex gap={4}>
-    <Button variant="primary">Button</Button>
-    <Button variant="secondary">Button</Button>
-    <Button variant="ghost-primary">Button</Button>
-    <Button variant="ghost-secondary">Button</Button>
+    <Button variant="primary">Submit</Button>
+    <Button variant="secondary">Cancel</Button>
+    <Button variant="ghost-primary">Edit</Button>
+    <Button variant="ghost-secondary">user@email.com</Button>
   </InlineFlex>
+);
+
+export const Sizes = () => (
+  <Flex gap={4} direction="column">
+    <InlineFlex gap={4}>
+      <Button size={1} variant="primary">
+        Submit
+      </Button>
+      <Button size={1} variant="secondary">
+        Cancel
+      </Button>
+      <Button size={1} variant="ghost-primary">
+        Edit
+      </Button>
+      <Button size={1} variant="ghost-secondary">
+        user@email.com
+      </Button>
+    </InlineFlex>
+    <InlineFlex gap={4}>
+      <Button size={2} variant="primary">
+        Submit
+      </Button>
+      <Button size={2} variant="secondary">
+        Cancel
+      </Button>
+      <Button size={2} variant="ghost-primary">
+        Edit
+      </Button>
+      <Button size={2} variant="ghost-secondary">
+        user@email.com
+      </Button>
+    </InlineFlex>
+    <InlineFlex gap={4}>
+      <Button size={3} variant="primary">
+        Submit
+      </Button>
+      <Button size={3} variant="secondary">
+        Cancel
+      </Button>
+      <Button size={3} variant="ghost-primary">
+        Edit
+      </Button>
+      <Button size={3} variant="ghost-secondary">
+        user@email.com
+      </Button>
+    </InlineFlex>
+  </Flex>
 );
 
 export const RenderAsLink = () => (
@@ -81,6 +136,7 @@ export const RenderAsLink = () => (
     </ButtonAsLink>
   </Flex>
 );
+
 export const Disabled = () => (
   <InlineFlex gap={4}>
     <Button isDisabled variant="primary">
@@ -326,10 +382,44 @@ export const WithIcon = () => (
       <Button variant="ghost-secondary" leftIcon={<FaEnvelope />}>
         Email
       </Button>
-      <Button variant="ghost-secondary" rightIcon={<FaPhone />}>
-        Call us
+      <Button variant="ghost-secondary" rightIcon={<FaChevronDown />}>
+        user@email.com
       </Button>
     </InlineFlex>
+  </InlineFlex>
+);
+
+export const IconOnly = () => (
+  <InlineFlex gap={4}>
+    <IconButton aria-label="Open menu">
+      <FaEllipsisV />
+    </IconButton>
+    <IconButton variant="secondary" aria-label="Open menu">
+      <FaEllipsisV />
+    </IconButton>
+    <IconButton variant="ghost-primary" aria-label="Open menu">
+      <FaEllipsisV />
+    </IconButton>
+    <IconButton variant="ghost-secondary" aria-label="Open menu">
+      <FaEllipsisV />
+    </IconButton>
+  </InlineFlex>
+);
+
+export const WithAttachedIconButton = () => (
+  <InlineFlex gap={4}>
+    <ControlGroup>
+      <Button>Button</Button>
+      <IconButton aria-label="IconButton">
+        <FaChevronDown />
+      </IconButton>
+    </ControlGroup>
+    <ControlGroup>
+      <Button variant="secondary">Button</Button>
+      <IconButton variant="secondary" aria-label="IconButton">
+        <FaChevronDown />
+      </IconButton>
+    </ControlGroup>
   </InlineFlex>
 );
 
@@ -363,6 +453,9 @@ export const WithControlGroup = () => {
         <Button>Hello</Button>
         <Button variant="secondary">Hello</Button>
         <Button variant="secondary">Hello</Button>
+        <IconButton aria-label="Open menu" variant="secondary">
+          <FaEllipsisH />
+        </IconButton>
       </ControlGroup>
 
       <ControlGroup>
@@ -370,8 +463,32 @@ export const WithControlGroup = () => {
         <ButtonGroup gap={0} isDisabled>
           <Button>Hello</Button>
           <Button variant="secondary">Hello</Button>
+          <IconButton aria-label="Open menu" variant="secondary">
+            <FaEllipsisH />
+          </IconButton>
         </ButtonGroup>
       </ControlGroup>
+
+      <InlineFlex gap={4}>
+        <ControlGroup>
+          {/* When using a `ButtonGroup` within a `ControlGroup`, you must override the `ButtonGroup`'s default `gap` prop to equal `0` */}
+          <ButtonGroup gap={0} isDisabled>
+            <Button>Button</Button>
+            <IconButton aria-label="IconButton">
+              <FaChevronDown />
+            </IconButton>
+          </ButtonGroup>
+        </ControlGroup>
+        <ControlGroup>
+          {/* When using a `ButtonGroup` within a `ControlGroup`, you must override the `ButtonGroup`'s default `gap` prop to equal `0` */}
+          <ButtonGroup gap={0} isDisabled>
+            <Button variant="secondary">Button</Button>
+            <IconButton variant="secondary" aria-label="IconButton">
+              <FaChevronDown />
+            </IconButton>
+          </ButtonGroup>
+        </ControlGroup>
+      </InlineFlex>
 
       <ControlGroup>
         <Select>
@@ -381,6 +498,9 @@ export const WithControlGroup = () => {
         </Select>
         <Input />
         <Button variant="primary">Hello</Button>
+        <IconButton aria-label="Open menu" variant="secondary">
+          <FaEllipsisH />
+        </IconButton>
       </ControlGroup>
       <ControlGroup>
         <Input />
