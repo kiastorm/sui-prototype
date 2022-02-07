@@ -10,6 +10,10 @@ export const ControlGroup = styled("div", {
   ["& .sui-button, & .sui-icon-button, &.sui-button-as-link, &.sui-icon-button-as-link"]:
     {
       borderRadius: "0",
+      "&:hover, &:focus, &:active": {
+        transform: "unset",
+      },
+
       "&:focus": {
         zIndex: 1,
         boxShadow:

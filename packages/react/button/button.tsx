@@ -188,6 +188,15 @@ export const buttonStyles = {
     pointerEvents: "none",
     opacity: 0.4,
   },
+  transition: "all 0.15s ease-in-out",
+
+  "&:hover, &:focus": {
+    transform: "translateY(-1px)",
+  },
+
+  "&.active, &:active": {
+    transform: "translateY(0px)",
+  },
 
   $$iconSpacing: "$space$2",
 

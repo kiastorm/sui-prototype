@@ -1,4 +1,5 @@
 import { AccessibleIcon } from "@radix-ui/react-accessible-icon";
+import { button } from "packages/react/button";
 import * as React from "react";
 import { cx, dataAttr, __DEV__ } from "../../core/utils";
 import { Square } from "../layout";
@@ -135,38 +136,9 @@ IconButtonAsLink.displayName = "IconButtonAsLink";
 IconButtonAsLink.toString = () => ".sui-icon-button-as-link";
 
 export const iconButtonStyles = {
-  all: "unset",
-  alignItems: "center",
-  boxSizing: "border-box",
-  userSelect: "none",
-  "&::before": {
-    boxSizing: "border-box",
-  },
-  "&::after": {
-    boxSizing: "border-box",
-  },
-  border: "none",
-
-  // Custom reset?
-  display: "inline-flex",
-  flexShrink: 0,
-  justifyContent: "center",
-  lineHeight: "1",
-
-  cursor: "pointer",
-  "&:disabled": {
-    pointerEvents: "none",
-    opacity: 0.4,
-  },
   borderRadius: "$2",
 
   variants: {
-    active: {
-      ...buttonStyles.variants.active,
-    },
-    variant: {
-      ...buttonStyles.variants.variant,
-    },
     size: {
       0: {},
       1: {
@@ -183,48 +155,11 @@ export const iconButtonStyles = {
       },
     },
   },
-  compoundVariants: [
-    {
-      active: true,
-      variant: "primary",
-      css: {
-        background: "$purple800",
-        boxShadow: "0px 0px 0px 2px $colors$purple400",
-      },
-    },
-    {
-      active: true,
-      variant: "secondary",
-      css: {
-        background: "$neutral300",
-        boxShadow: "0px 0px 0px 2px $colors$neutral500",
-      },
-    },
-    {
-      active: true,
-      variant: "ghost-primary",
-      css: {
-        background: "$purple100",
-        borderColor: "$purple400",
-        boxShadow: "0px 0px 0px 2px $colors$purple400",
-      },
-    },
-    {
-      active: true,
-      variant: "ghost-secondary",
-      css: {
-        background: "$neutral300",
-        borderColor: "$neutral500",
-        boxShadow: "0px 0px 0px 2px $colors$neutral500",
-      },
-    },
-  ],
-  defaultVariants: buttonStyles.defaultVariants,
 };
 
-const StyledIconButtonAsLink = styled("a", iconButtonStyles);
+const StyledIconButtonAsLink = styled("a", buttonStyles, iconButtonStyles);
 
-const StyledIconButton = styled("button", iconButtonStyles);
+const StyledIconButton = styled("button", buttonStyles, iconButtonStyles);
 
 type IconButtonAsLinkElement = React.ElementRef<typeof StyledIconButtonAsLink>;
 type IconButtonElement = React.ElementRef<typeof StyledIconButton>;
