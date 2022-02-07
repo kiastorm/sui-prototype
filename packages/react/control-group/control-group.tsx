@@ -18,7 +18,8 @@ export const ControlGroup = styled("div", {
       "&:first-child": {
         borderTopLeftRadius: "$2",
         borderBottomLeftRadius: "$2",
-        borderRight: "1px solid $colors$neutral500",
+        borderRightWidth: "1px",
+        borderRightStyle: "solid",
         "&:focus": {
           boxShadow:
             "inset 0 0 0 1px $colors$purple400, 0 0 0 1px $colors$purple400",

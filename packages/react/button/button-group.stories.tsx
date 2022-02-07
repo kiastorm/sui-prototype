@@ -2,7 +2,7 @@ import { Meta, Story } from "@storybook/react";
 import { useBooleanToggleLoop } from "../react-utils";
 import React from "react";
 import { Button, IconButton, buttonStyles } from ".";
-import { Container, Flex, flexStyles } from "../layout";
+import { Container, flex, Flex, flexStyles } from "../layout";
 import { ButtonGroup } from "./button-group";
 import { pick } from "../../core/utils";
 import { FaCheck, FaTimes } from "react-icons/fa";
@@ -25,6 +25,7 @@ const config: Meta<React.ComponentProps<typeof Button>> = {
       },
       description: "Theme-aware CSS",
     },
+
     ...Object.keys(flexStyles.variants).reduce((prev, current) => {
       prev[current] = {
         control: "string",
@@ -38,26 +39,6 @@ const config: Meta<React.ComponentProps<typeof Button>> = {
 
       return prev;
     }, {}),
-    ...Object.keys(pick(buttonStyles.variants, ["variant", "size"])).reduce(
-      (prev, current) => {
-        prev[current] = {
-          control: "string",
-          table: {
-            type: null,
-            ...(buttonStyles.defaultVariants[current]
-              ? {
-                  defaultValue: {
-                    summary: buttonStyles.defaultVariants[current],
-                  },
-                }
-              : {}),
-          },
-        };
-
-        return prev;
-      },
-      {}
-    ),
   },
   decorators: [
     (Story: Story) => (
@@ -72,7 +53,7 @@ const config: Meta<React.ComponentProps<typeof Button>> = {
 
 export default config;
 
-export const BasicUsage = () => {
+export const DisableGroup = () => {
   const isDisabledLoop = useBooleanToggleLoop(true);
   return (
     <>

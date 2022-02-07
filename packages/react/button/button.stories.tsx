@@ -448,10 +448,21 @@ export const WithButtonGroup = () => {
  */
 export const WithControlGroup = () => {
   return (
-    <Flex gap={4} direction="column">
+    <Flex gap={8} direction="column">
+      <ControlGroup>
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+      </ControlGroup>
+
+      <ControlGroup>
+        <ButtonGroup gap={0} isDisabled>
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+        </ButtonGroup>
+      </ControlGroup>
+
       <ControlGroup>
         <Button>Hello</Button>
-        <Button variant="secondary">Hello</Button>
         <Button variant="secondary">Hello</Button>
         <IconButton aria-label="Open menu" variant="secondary">
           <FaEllipsisH />
@@ -459,7 +470,6 @@ export const WithControlGroup = () => {
       </ControlGroup>
 
       <ControlGroup>
-        {/* When using a `ButtonGroup` within a `ControlGroup`, you must override the `ButtonGroup`'s default `gap` prop to equal `0` */}
         <ButtonGroup gap={0} isDisabled>
           <Button>Hello</Button>
           <Button variant="secondary">Hello</Button>
@@ -469,7 +479,22 @@ export const WithControlGroup = () => {
         </ButtonGroup>
       </ControlGroup>
 
-      <InlineFlex gap={4}>
+      <InlineFlex gap={2}>
+        <ControlGroup>
+          <Button>Button</Button>
+          <IconButton aria-label="IconButton">
+            <FaChevronDown />
+          </IconButton>
+        </ControlGroup>
+        <ControlGroup>
+          <Button variant="secondary">Button</Button>
+          <IconButton variant="secondary" aria-label="IconButton">
+            <FaChevronDown />
+          </IconButton>
+        </ControlGroup>
+      </InlineFlex>
+
+      <InlineFlex gap={2}>
         <ControlGroup>
           {/* When using a `ButtonGroup` within a `ControlGroup`, you must override the `ButtonGroup`'s default `gap` prop to equal `0` */}
           <ButtonGroup gap={0} isDisabled>
@@ -489,38 +514,6 @@ export const WithControlGroup = () => {
           </ButtonGroup>
         </ControlGroup>
       </InlineFlex>
-
-      <ControlGroup>
-        <Select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </Select>
-        <Input />
-        <Button variant="primary">Hello</Button>
-        <IconButton aria-label="Open menu" variant="secondary">
-          <FaEllipsisH />
-        </IconButton>
-      </ControlGroup>
-      <ControlGroup>
-        <Input />
-        <Select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </Select>
-        <Button variant="primary">Hello</Button>
-      </ControlGroup>
-
-      <ControlGroup>
-        <Button variant="primary">Hello</Button>
-        <Input />
-        <Select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </Select>
-      </ControlGroup>
     </Flex>
   );
 };

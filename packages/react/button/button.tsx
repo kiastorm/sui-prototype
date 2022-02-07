@@ -242,6 +242,7 @@ export const buttonStyles = {
       0: {},
       primary: {
         bgc: "$purple900",
+        borderColor: "$purple800",
         color: "white",
         "@hover": {
           "&:hover": {

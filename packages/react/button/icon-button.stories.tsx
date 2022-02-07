@@ -1,26 +1,18 @@
 import { Meta, Story } from "@storybook/react";
-import merge from "lodash.merge";
 import React from "react";
 import {
   FaCheck,
-  FaCross,
-  FaEdit,
+  FaChevronDown,
   FaEllipsisH,
-  FaEllipsisV,
-  FaEnvelope,
   FaPen,
-  FaPhone,
-  FaPlane,
   FaPlus,
   FaQuestion,
   FaTimes,
 } from "react-icons/fa";
-import { IconButtonAsLink, iconButtonStyles, IconButton } from ".";
+import { Button, IconButton, IconButtonAsLink, iconButtonStyles } from ".";
 import { ControlGroup } from "../control-group";
-import { Input } from "../input";
 import { Container, Flex, InlineFlex } from "../layout";
 import { useBooleanToggleLoop } from "../react-utils";
-import { Select } from "../select";
 import { ButtonGroup } from "./button-group";
 
 const config: Meta<React.ComponentProps<typeof IconButton>> = {
@@ -396,6 +388,20 @@ export const WithControlGroup = () => {
       </ControlGroup>
 
       <ControlGroup>
+        <Button>Action</Button>
+        <IconButton aria-label="Open menu">
+          <FaChevronDown />
+        </IconButton>
+      </ControlGroup>
+
+      <ControlGroup>
+        <Button variant="secondary">Action</Button>
+        <IconButton variant="secondary" aria-label="Open menu">
+          <FaChevronDown />
+        </IconButton>
+      </ControlGroup>
+
+      <ControlGroup>
         {/* When using a `ButtonGroup` within a `ControlGroup`, you must override the `ButtonGroup`'s default `gap` prop to equal `0` */}
         <ButtonGroup gap={0} isDisabled>
           <IconButton aria-label="Open menu">
@@ -405,41 +411,6 @@ export const WithControlGroup = () => {
             <FaEllipsisH />
           </IconButton>
         </ButtonGroup>
-      </ControlGroup>
-
-      <ControlGroup>
-        <Select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </Select>
-        <Input />
-        <IconButton aria-label="Open menu" variant="primary">
-          <FaCheck />
-        </IconButton>
-      </ControlGroup>
-      <ControlGroup>
-        <Input />
-        <Select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </Select>
-        <IconButton aria-label="Open menu" variant="secondary">
-          <FaEllipsisH />
-        </IconButton>
-      </ControlGroup>
-
-      <ControlGroup>
-        <IconButton aria-label="Open menu" variant="secondary">
-          <FaEllipsisH />
-        </IconButton>
-        <Input />
-        <Select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </Select>
       </ControlGroup>
     </Flex>
   );
@@ -470,10 +441,6 @@ export const Custom = () => {
           bgc: "$neutral800",
           boxShadow: "0px 0px 0px 2px $colors$purple400",
         },
-
-        // '&:hover, &:focus':  {
-        //     box-shadow: $box-shadow-large;
-        // },
 
         ...(isActive
           ? {

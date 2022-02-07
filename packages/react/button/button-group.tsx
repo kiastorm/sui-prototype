@@ -1,16 +1,25 @@
-import { __DEV__, cx } from "../../core/utils";
-import { Flex } from "../layout";
-import { createContext } from "../react-utils";
 import React from "react";
+import { cx, __DEV__ } from "../../core/utils";
 import { Button } from "../button";
+import { flex } from "../layout";
+import { css, styled } from "../react-stitches";
+import { createContext } from "../react-utils";
 
 type ForwardedButtonProps = Pick<
   React.ComponentProps<typeof Button>,
   "isDisabled"
 >;
 
+export const buttonGroup = css(flex, {
+  defaultVariants: {
+    gap: 2,
+  },
+});
+
+export const StyledButtonGroup = styled("div", buttonGroup);
+
 export interface ButtonGroupProps
-  extends React.ComponentProps<typeof Flex>,
+  extends React.ComponentProps<typeof StyledButtonGroup>,
     ForwardedButtonProps {}
 
 interface ButtonGroupContext extends ForwardedButtonProps {}
@@ -32,18 +41,17 @@ export { useButtonGroup };
  * - Props applied directly to child `Button`s will override any set by its parent `ButtonGroup`.
  */
 export const ButtonGroup = React.forwardRef<
-  React.ElementRef<typeof Flex>,
+  React.ElementRef<typeof StyledButtonGroup>,
   ButtonGroupProps
 >((props, ref) => {
-  const { className, isDisabled, gap = 2, ...rest } = props;
+  const { className, isDisabled, ...rest } = props;
 
   return (
     <ButtonGroupProvider value={{ isDisabled }}>
-      <Flex
+      <StyledButtonGroup
         className={cx("sui-button-group", className)}
         ref={ref}
         role="group"
-        gap={gap}
         {...rest}
       />
     </ButtonGroupProvider>
