@@ -1,15 +1,14 @@
 import { AccessibleIcon } from "@radix-ui/react-accessible-icon";
-import { button } from "packages/react/button";
+import { ButtonSpinner } from "packages/react/button/button-spinner";
 import * as React from "react";
 import { cx, dataAttr, __DEV__ } from "../../core/utils";
 import { Square } from "../layout";
-import { styled } from "../react-stitches";
+import { css, VariantProps } from "../react-stitches";
 import { Spinner } from "../spinner";
-import { buttonStyles } from "./button";
 import { useButtonGroup } from "./button-group";
+import { iconButton } from "./button.styles";
 
-export interface IconButtonProps
-  extends React.ComponentProps<typeof StyledIconButton> {
+export interface IconButtonOptions extends VariantProps<typeof iconButton> {
   /**
    * The html button type to use.
    */
@@ -31,88 +30,44 @@ export interface IconButtonProps
    */
   isDisabled?: boolean;
   /**
+   * The label to show in the button when `isLoading` is true
+   * If no text is passed, it only shows the spinner
+   */
+  loadingText?: string;
+  /**
    * The icon to be used in the button.
    * @type React.ReactElement
    */
   icon?: React.ReactElement;
-  /**
-   * If `true`, the button will be perfectly round. Else, it'll be slightly round
-   */
-  isRound?: boolean;
+}
+
+interface IconButtonProps
+  extends React.ComponentProps<"button">,
+    IconButtonOptions {
   /**
    * A11y: A label that describes the button
    */
   "aria-label": string;
 }
 
-export const IconButton = React.forwardRef<IconButtonElement, IconButtonProps>(
-  (props, ref) => {
-    const group = useButtonGroup();
-    const {
-      icon,
-      children,
-      isRound,
-      "aria-label": ariaLabel,
-      isActive,
-      isLoading,
-      isDisabled = group?.isDisabled,
-      className,
-      spinner = <Spinner color="currentColor" />,
-      type,
-      variant,
-      size,
-      css,
-      ...rest
-    } = props;
-
-    /**
-     * Passing the icon as prop or children should work
-     */
-    const _children = icon || children;
-
-    return (
-      <StyledIconButton
-        ref={ref}
-        className={cx("sui-icon-button", className)}
-        disabled={isDisabled || isLoading}
-        type={type ?? "button"}
-        data-active={dataAttr(isActive)}
-        data-loading={dataAttr(isLoading)}
-        active={isActive}
-        variant={variant}
-        size={size}
-        aria-label={ariaLabel}
-        css={{
-          p: 0,
-          borderRadius: isRound ? "$round" : undefined,
-          ...css,
-        }}
-        {...rest}
-      >
-        {isLoading ? (
-          <Square className="sui-icon-button__spinner">{spinner}</Square>
-        ) : (
-          <AccessibleIcon label={ariaLabel}>{_children}</AccessibleIcon>
-        )}
-      </StyledIconButton>
-    );
-  }
-);
-
-if (__DEV__) {
-  IconButton.displayName = "IconButton";
-}
-
-export const IconButtonAsLink = React.forwardRef<
-  IconButtonAsLinkElement,
-  IconButtonAsLinkProps
+export const IconButton = React.forwardRef<
+  React.ElementRef<"button">,
+  IconButtonProps
 >((props, ref) => {
+  const group = useButtonGroup();
   const {
-    className,
     icon,
     children,
+    isRound,
     "aria-label": ariaLabel,
+    loadingText,
+    isActive,
+    isLoading,
+    isDisabled = group?.isDisabled,
+    spinner = <Spinner color="currentColor" />,
     type,
+    variant,
+    size,
     ...rest
   } = props;
 
@@ -122,53 +77,76 @@ export const IconButtonAsLink = React.forwardRef<
   const _children = icon || children;
 
   return (
-    <StyledIconButtonAsLink
+    <button
       ref={ref}
-      className={cx("sui-icon-button-as-link", className)}
+      className={cx(
+        "sui-icon-button",
+        iconButton({ variant, size, isRound, isActive })
+      )}
+      disabled={isDisabled || isLoading}
+      type={type ?? "button"}
+      data-active={dataAttr(isActive)}
+      data-loading={dataAttr(isLoading)}
+      aria-label={ariaLabel}
       {...rest}
     >
-      <AccessibleIcon label={ariaLabel}>{_children}</AccessibleIcon>
-    </StyledIconButtonAsLink>
+      {isLoading ? (
+        <ButtonSpinner label={loadingText} />
+      ) : (
+        <AccessibleIcon label={ariaLabel}>{_children}</AccessibleIcon>
+      )}
+    </button>
   );
 });
 
-IconButtonAsLink.displayName = "IconButtonAsLink";
-IconButtonAsLink.toString = () => ".sui-icon-button-as-link";
+if (__DEV__) {
+  IconButton.displayName = "IconButton";
+}
 
-export const iconButtonStyles = {
-  borderRadius: "$2",
+const linkWithIconButtonStyles = css(iconButton, {});
 
-  variants: {
-    size: {
-      0: {},
-      1: {
-        height: "$6",
-        width: "$6",
-      },
-      2: {
-        height: "$8",
-        width: "$8",
-      },
-      3: {
-        height: "$9",
-        width: "$9",
-      },
-    },
-  },
-};
-
-const StyledIconButtonAsLink = styled("a", buttonStyles, iconButtonStyles);
-
-const StyledIconButton = styled("button", buttonStyles, iconButtonStyles);
-
-type IconButtonAsLinkElement = React.ElementRef<typeof StyledIconButtonAsLink>;
-type IconButtonElement = React.ElementRef<typeof StyledIconButton>;
-
-interface IconButtonAsLinkProps
-  extends React.ComponentProps<typeof StyledIconButtonAsLink>,
-    Pick<IconButtonProps, "spinner" | "icon" | "isRound"> {
+interface LinkWithIconButtonStylesProps
+  extends React.ComponentProps<"a">,
+    Omit<VariantProps<typeof linkWithIconButtonStyles>, "isActive">,
+    Pick<IconButtonOptions, "spinner" | "icon" | "isRound"> {
   /**
    * A11y: A label that describes the button
    */
   "aria-label": string;
 }
+
+export const LinkWithIconButtonStyles = React.forwardRef<
+  React.ElementRef<"a">,
+  LinkWithIconButtonStylesProps
+>((props, ref) => {
+  const {
+    icon,
+    children,
+    "aria-label": ariaLabel,
+    size,
+    variant,
+    isRound,
+    ...rest
+  } = props;
+
+  /**
+   * Passing the icon as prop or children should work
+   */
+  const _children = icon || children;
+
+  return (
+    <a
+      ref={ref}
+      className={cx(
+        "sui-icon-button-as-link",
+        linkWithIconButtonStyles({ size, variant, isRound })
+      )}
+      {...rest}
+    >
+      <AccessibleIcon label={ariaLabel}>{_children}</AccessibleIcon>
+    </a>
+  );
+});
+
+LinkWithIconButtonStyles.displayName = "LinkWithIconButtonStyles";
+LinkWithIconButtonStyles.toString = () => ".sui-icon-button-as-link";

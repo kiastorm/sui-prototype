@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react";
 import { useBooleanToggleLoop } from "../react-utils";
 import React from "react";
-import { Button, IconButton, buttonStyles } from ".";
-import { Container, flex, Flex, flexStyles } from "../layout";
+import { Button, IconButton } from ".";
+import { Container, flex, Flex, flexStyles, Spacer } from "../layout";
 import { ButtonGroup } from "./button-group";
 import { pick } from "../../core/utils";
 import { FaCheck, FaTimes } from "react-icons/fa";
@@ -26,19 +26,19 @@ const config: Meta<React.ComponentProps<typeof Button>> = {
       description: "Theme-aware CSS",
     },
 
-    ...Object.keys(flexStyles.variants).reduce((prev, current) => {
-      prev[current] = {
-        control: "string",
-        table: {
-          type: null,
-          ...(flexStyles.defaultVariants[current]
-            ? { defaultValue: { summary: flexStyles.defaultVariants[current] } }
-            : {}),
-        },
-      };
+    // ...Object.keys(flexStyles.variants).reduce((prev, current) => {
+    //   prev[current] = {
+    //     control: "string",
+    //     table: {
+    //       type: null,
+    //       ...(flexStyles.defaultVariants[current]
+    //         ? { defaultValue: { summary: flexStyles.defaultVariants[current] } }
+    //         : {}),
+    //     },
+    //   };
 
-      return prev;
-    }, {}),
+    //   return prev;
+    // }, {}),
   },
   decorators: [
     (Story: Story) => (
@@ -106,9 +106,8 @@ export const WithCustomFlexProps = () => (
 
     <ButtonGroup>
       <Button variant="secondary">Cancel</Button>
-      <Button variant="ghost-primary" css={{ ml: "auto" }}>
-        Some Other Action
-      </Button>
+      <Spacer />
+      <Button variant="ghost-primary">Some Other Action</Button>
       <Button>Submit</Button>
     </ButtonGroup>
   </>

@@ -80,6 +80,13 @@ export const {
 
       whiteA1: "rgba(255, 255, 255, 0.1)",
       whiteA2: "rgba(255, 255, 255, 0.2)",
+
+      loContrast: "white",
+      canvas: "hsl(0 0% 93%)",
+      panel: "white",
+      transparentPanel: "hsl(0 0% 0% / 97%)",
+      shadowLight: "hsl(206 22% 7% / 35%)",
+      shadowDark: "hsl(206 22% 7% / 20%)",
     },
     fonts: {
       sans: "Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
@@ -132,25 +139,40 @@ export const {
       20: "6rem",
     },
     fontSizes: {
-      1: "0.688rem", // 11px
-      2: "0.75rem", // 12px
-      3: "0.813rem", // 13px
-      4: "0.875rem", // 14px
-      5: "0.938rem", // 15px
-      6: "1rem", // 16px
-      7: "1.125rem", // 18px
-      8: "1.25rem", // 20px
-      9: "1.375rem", // 22px
-      10: "1.5rem", // 24px
-      11: "1.875rem", // 30px
-      12: "2.125rem", // 34px
-      13: "3rem", // 48px
-      14: "3.688rem", // 59px
+      "body-1": "0.875rem", // 14px
+      "body-1-mobile": "1rem", // 16px,
+      "body-2": "1rem", // 16px
+      "body-2-mobile": "1.125rem", // 18px
+
+      "heading-1": "0.875rem", // 14px
+      "heading-1-mobile": "1rem", // 16px,
+      "heading-2": "1rem", // 16px
+      "heading-2-mobile": "1.125rem", // 18px
+      "heading-3": "1.25rem", // 20px
+      "heading-3-mobile": "1.25rem", // 20px
+      "heading-4": "1.5rem", // 24px
+      "heading-4-mobile": "1.375rem", // 22px
+      "heading-5": "2.125rem", // 34px
+      "heading-5-mobile": "1.5rem", // 24px
+      "heading-6": "3rem", // 48px
+      "heading-6-mobile": "1.875rem", // 30px
+    },
+    lineHeights: {
+      "body-short-1": "1.125em", // 18px
+      "body-long-1": "1.25em", // 20px
+      "body-short-2": "1.375em", // 22px
+      "body-long-2": "1.5em", // 24px,
+      "heading-1": "1.125em", // 18px
+      "heading-2": "1.375em", // 22px
+      "heading-3": "1.625em", // 26px
+      "heading-4": "1.75em", // 28px
+      "heading-5": "2.25em", // 36px
+      "heading-6": "3.875em", // 62px
     },
     radii: {
-      1: "0.13rem", // 1px
-      2: "0.26rem", // 2px
-      3: "0.52rem", // 4px
+      1: "0.125rem", // 1px
+      2: "0.25rem", // 2px
+      3: "0.5rem", // 4px
       round: "50%",
       pill: "9999px",
     },

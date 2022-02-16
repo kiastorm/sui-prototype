@@ -1,17 +1,14 @@
+import { button } from "./button.styles";
 import * as React from "react";
 import { cx, dataAttr } from "../../core/utils";
 import { AccessibleIcon } from "../icon";
 import { Square } from "../layout";
-import { ComponentProps, css, styled } from "../react-stitches";
+import { VariantProps, css, styled } from "../react-stitches";
 import { Spinner } from "../spinner";
-import { ButtonSpinner } from "./button-spinner";
 import { useButtonGroup } from "./button-group";
+import { ButtonSpinner } from "./button-spinner";
 
-type ButtonElement = React.ElementRef<typeof StyledButton>;
-type ButtonAsLinkElement = React.ElementRef<typeof StyledButtonAsLink>;
-
-export interface ButtonProps
-  extends Omit<ComponentProps<typeof StyledButton>, "active" | "disabled"> {
+export interface ButtonOptions extends VariantProps<typeof button> {
   /**
    * If added, the button will show an icon before the button's label.
    */
@@ -53,20 +50,22 @@ export interface ButtonProps
   spinnerPlacement?: "start" | "end" | false;
 }
 
+interface ButtonProps
+  extends Omit<React.ComponentProps<"button">, "disabled" | "className">,
+    ButtonOptions {}
+
 /**
  * `Button`s are used to trigger actions and render a `button`.
  *
  * Noteable props: `isLoading`, `loadingText`, `isActive`, `isDisabled`, `leftIcon`, `rightIcon`
  */
-export const Button = React.forwardRef<ButtonElement, ButtonProps>(
+export const Button = React.forwardRef<React.ElementRef<"button">, ButtonProps>(
   (props, ref) => {
     const group = useButtonGroup();
-
     const {
       isActive,
       isLoading,
       isDisabled = group?.isDisabled,
-      className,
       loadingText,
       leftIcon,
       rightIcon,
@@ -80,16 +79,17 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
     } = props;
 
     return (
-      <StyledButton
+      <button
         ref={ref}
-        className={cx("sui-button", className)}
+        className={cx(
+          "sui-button",
+          button({ active: isActive, variant, size })
+          // className
+        )}
         disabled={isDisabled || isLoading}
         type={type ?? "button"}
         data-active={dataAttr(isActive)}
         data-loading={dataAttr(isLoading)}
-        active={isActive}
-        variant={variant}
-        size={size}
         {...rest}
       >
         {isLoading && spinnerPlacement === "start" ? (
@@ -115,7 +115,7 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
             </Square>
           )
         )}
-      </StyledButton>
+      </button>
     );
   }
 );
@@ -123,30 +123,9 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
 Button.toString = () => ".sui-button";
 Button.displayName = "Button";
 
-export const ButtonAsLink = React.forwardRef<
-  ButtonAsLinkElement,
-  ButtonAsLinkProps
->((props, ref) => {
-  const { className, leftIcon, rightIcon, children, type, ...rest } = props;
+type OmittedLinkButtonVariants = "isActive";
 
-  return (
-    <StyledButtonAsLink
-      ref={ref}
-      className={cx("sui-button-as-link", className)}
-      {...rest}
-    >
-      {leftIcon && <AccessibleIcon label="">{leftIcon}</AccessibleIcon>}
-      {children}
-      {rightIcon && <AccessibleIcon label="">{rightIcon}</AccessibleIcon>}
-    </StyledButtonAsLink>
-  );
-});
-
-ButtonAsLink.displayName = "ButtonAsLink";
-ButtonAsLink.toString = () => ".sui-button-as-link";
-
-type HTMLButtonProps =
-  | "isActive"
+type OmittedLinkButtonOptions =
   | "isDisabled"
   | "isLoading"
   | "type"
@@ -154,262 +133,33 @@ type HTMLButtonProps =
   | "spinner"
   | "spinnerPlacement";
 
-interface ButtonAsLinkProps
-  extends ComponentProps<typeof StyledButtonAsLink>,
-    Omit<ButtonProps, HTMLButtonProps> {}
+interface LinkWithButtonStylesProps
+  extends React.ComponentProps<"a">,
+    Omit<VariantProps<typeof button>, OmittedLinkButtonVariants>,
+    Omit<ButtonOptions, OmittedLinkButtonOptions> {}
 
-export const buttonStyles = {
-  all: "unset",
-  alignItems: "center",
-  boxSizing: "border-box",
-  userSelect: "none",
-  "&::before": {
-    boxSizing: "border-box",
-  },
-  "&::after": {
-    boxSizing: "border-box",
-  },
-  border: "none",
+export const LinkWithButtonStyles = React.forwardRef<
+  React.ElementRef<"a">,
+  LinkWithButtonStylesProps
+>((props, ref) => {
+  const { leftIcon, rightIcon, children, variant, size, isActive, ...rest } =
+    props;
 
-  // Custom reset?
-  display: "inline-flex",
-  flexShrink: 0,
-  justifyContent: "center",
-  lineHeight: "1",
+  return (
+    <a
+      ref={ref}
+      className={cx(
+        "sui-link-with-button-styles",
+        button({ variant, size, isActive })
+      )}
+      {...rest}
+    >
+      {leftIcon && <AccessibleIcon label="">{leftIcon}</AccessibleIcon>}
+      {children}
+      {rightIcon && <AccessibleIcon label="">{rightIcon}</AccessibleIcon>}
+    </a>
+  );
+});
 
-  // Custom
-  height: "$5",
-  px: "$2",
-  font: "sans",
-  fontSize: "$2",
-  fontWeight: 700,
-  cursor: "pointer",
-  "&:disabled": {
-    pointerEvents: "none",
-    opacity: 0.4,
-  },
-  transition: "all 0.15s ease-in-out",
-
-  "&:hover, &:focus": {
-    transform: "translateY(-1px)",
-  },
-
-  "&.active, &:active": {
-    transform: "translateY(0px)",
-  },
-
-  $$iconSpacing: "$space$2",
-
-  ".sui-button__icon--start": {
-    mr: "$$iconSpacing",
-    svg: {
-      width: "$$iconSize",
-      height: "$$iconSize",
-    },
-  },
-  ".sui-button__icon--end": {
-    ml: "$$iconSpacing",
-    svg: {
-      width: "$$iconSize",
-      height: "$$iconSize",
-    },
-  },
-  variants: {
-    active: {
-      true: {},
-      false: {},
-    },
-    // Size of the button
-    size: {
-      "1": {
-        borderRadius: "$2",
-        height: "$6",
-        px: "$2",
-        fontSize: "$3",
-        lineHeight: "$fontSizes$5",
-        $$iconSize: "$3",
-      },
-      "2": {
-        borderRadius: "$2",
-        height: "$8",
-        px: "$4",
-        fontSize: "$5",
-        lineHeight: "$fontSizes$4",
-        $$iconSize: "$4",
-      },
-      "3": {
-        borderRadius: "$2",
-        height: "$9",
-        px: "$6",
-        fontSize: "$5",
-        lineHeight: "$fontSizes$4",
-        $$iconSize: "$4",
-      },
-    },
-    // Visual style and colour of the button
-    variant: {
-      0: {},
-      primary: {
-        bgc: "$purple900",
-        borderColor: "$purple800",
-        color: "white",
-        "@hover": {
-          "&:hover": {
-            background: "$purple800",
-          },
-        },
-        "&:focus": {
-          background: "$purple900",
-          boxShadow: "0px 0px 0px 2px $colors$purple400",
-        },
-        "&:active": {
-          background: "$purple800",
-          boxShadow: "0px 0px 0px 2px $colors$purple400",
-        },
-      },
-      secondary: {
-        bgc: "$neutral0",
-        color: "$neutral800",
-        border: "1px solid $colors$neutral500",
-        "@hover": {
-          "&:hover": {
-            background: "$neutral100",
-          },
-        },
-        "&:focus": {
-          borderColor: "$neutral500",
-          background: "$neutral200",
-          boxShadow: "0px 0px 0px 2px $colors$neutral500",
-        },
-        "&:active": {
-          background: "$neutral300",
-          boxShadow: "0px 0px 0px 2px $colors$neutral500",
-        },
-      },
-      "ghost-primary": {
-        bgc: "transparent",
-        color: "$purple900",
-        "@hover": {
-          "&:hover": {
-            background: "$purple200",
-          },
-        },
-        "&:focus": {
-          borderColor: "$purple400",
-          background: "$purple200",
-          boxShadow: "0px 0px 0px 2px $colors$purple400",
-        },
-        "&:active": {
-          background: "$purple100",
-          boxShadow: "0px 0px 0px 2px $colors$purple400",
-        },
-      },
-      "ghost-secondary": {
-        bgc: "transparent",
-        color: "$neutral800",
-        "@hover": {
-          "&:hover": {
-            background: "$neutral100",
-          },
-        },
-        "&:focus": {
-          borderColor: "$neutral500",
-          background: "$neutral200",
-          boxShadow: "0px 0px 0px 2px $colors$neutral500",
-        },
-        "&:active": {
-          background: "$neutral300",
-          boxShadow: "0px 0px 0px 2px $colors$neutral500",
-        },
-      },
-    },
-  },
-  compoundVariants: [
-    {
-      size: 1,
-      variant: "ghost-primary",
-      css: {
-        px: "$2",
-      },
-    },
-    {
-      size: 2,
-      variant: "ghost-primary",
-      css: {
-        px: "$2",
-      },
-    },
-    {
-      size: 3,
-      variant: "ghost-primary",
-      css: {
-        px: "$2",
-      },
-    },
-    {
-      size: 1,
-      variant: "ghost-secondary",
-      css: {
-        px: "$2",
-      },
-    },
-    {
-      size: 2,
-      variant: "ghost-secondary",
-      css: {
-        px: "$2",
-      },
-    },
-    {
-      size: 3,
-      variant: "ghost-secondary",
-      css: {
-        px: "$2",
-      },
-    },
-    {
-      active: true,
-      variant: "primary",
-      css: {
-        background: "$purple800",
-        boxShadow: "0px 0px 0px 2px $colors$purple400",
-      },
-    },
-    {
-      active: true,
-      variant: "secondary",
-      css: {
-        background: "$neutral300",
-        boxShadow: "0px 0px 0px 2px $colors$neutral500",
-      },
-    },
-    {
-      active: true,
-      variant: "ghost-primary",
-      css: {
-        background: "$purple100",
-        borderColor: "$purple400",
-        boxShadow: "0px 0px 0px 2px $colors$purple400",
-      },
-    },
-    {
-      active: true,
-      variant: "ghost-secondary",
-      css: {
-        background: "$neutral300",
-        borderColor: "$neutral500",
-        boxShadow: "0px 0px 0px 2px $colors$neutral500",
-      },
-    },
-  ],
-  defaultVariants: {
-    variant: "primary",
-    size: "2",
-  },
-};
-
-export const button = css(buttonStyles);
-
-export const StyledButtonAsLink = styled("a", buttonStyles);
-
-export const StyledButton = styled("button", buttonStyles);
+LinkWithButtonStyles.displayName = "LinkWithButtonStyles";
+LinkWithButtonStyles.toString = () => ".sui-button-as-link";

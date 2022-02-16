@@ -9,7 +9,7 @@ import {
   FaPhone,
   FaPlus,
 } from "react-icons/fa";
-import { Button, ButtonAsLink, buttonStyles } from ".";
+import { Button, LinkWithButtonStyles } from ".";
 import { ControlGroup } from "../control-group";
 import { Container, Flex, InlineFlex } from "../layout";
 import { useBooleanToggleLoop } from "../react-utils";
@@ -35,23 +35,23 @@ const config: Meta<React.ComponentProps<typeof Button>> = {
       },
       description: "Theme-aware CSS",
     },
-    ...Object.keys(buttonStyles.variants).reduce((prev, current) => {
-      prev[current] = {
-        control: "string",
-        table: {
-          // type: null,
-          ...(buttonStyles.defaultVariants[current]
-            ? {
-                defaultValue: {
-                  summary: buttonStyles.defaultVariants[current],
-                },
-              }
-            : {}),
-        },
-      };
+    // ...Object.keys(buttonStyles.variants).reduce((prev, current) => {
+    //   prev[current] = {
+    //     control: "string",
+    //     table: {
+    //       // type: null,
+    //       ...(buttonStyles.defaultVariants[current]
+    //         ? {
+    //             defaultValue: {
+    //               summary: buttonStyles.defaultVariants[current],
+    //             },
+    //           }
+    //         : {}),
+    //     },
+    //   };
 
-      return prev;
-    }, {}),
+    //   return prev;
+    // }, {}),
   },
   decorators: [
     (Story: Story) => (
@@ -122,18 +122,18 @@ export const Sizes = () => (
 
 export const RenderAsLink = () => (
   <Flex gap={4}>
-    <ButtonAsLink variant="primary" href="javascript:;">
+    <LinkWithButtonStyles variant="primary" href="javascript:;">
       Button
-    </ButtonAsLink>
-    <ButtonAsLink variant="secondary" href="javascript:;">
+    </LinkWithButtonStyles>
+    <LinkWithButtonStyles variant="secondary" href="javascript:;">
       Button
-    </ButtonAsLink>
-    <ButtonAsLink variant="ghost-primary" href="javascript:;">
+    </LinkWithButtonStyles>
+    <LinkWithButtonStyles variant="ghost-primary" href="javascript:;">
       Button
-    </ButtonAsLink>
-    <ButtonAsLink variant="ghost-secondary" href="javascript:;">
+    </LinkWithButtonStyles>
+    <LinkWithButtonStyles variant="ghost-secondary" href="javascript:;">
       Button
-    </ButtonAsLink>
+    </LinkWithButtonStyles>
   </Flex>
 );
 

@@ -9,7 +9,7 @@ import {
   FaQuestion,
   FaTimes,
 } from "react-icons/fa";
-import { Button, IconButton, IconButtonAsLink, iconButtonStyles } from ".";
+import { Button, IconButton, LinkWithIconButtonStyles } from ".";
 import { ControlGroup } from "../control-group";
 import { Container, Flex, InlineFlex } from "../layout";
 import { useBooleanToggleLoop } from "../react-utils";
@@ -33,23 +33,23 @@ const config: Meta<React.ComponentProps<typeof IconButton>> = {
       },
       description: "Theme-aware CSS",
     },
-    ...Object.keys(iconButtonStyles.variants).reduce((prev, current) => {
-      prev[current] = {
-        control: "string",
-        table: {
-          // type: null,
-          ...(iconButtonStyles.defaultVariants[current]
-            ? {
-                defaultValue: {
-                  summary: iconButtonStyles.defaultVariants[current],
-                },
-              }
-            : {}),
-        },
-      };
+    // ...Object.keys(iconButtonStyles.variants).reduce((prev, current) => {
+    //   prev[current] = {
+    //     control: "string",
+    //     table: {
+    //       // type: null,
+    //       ...(iconButtonStyles.defaultVariants[current]
+    //         ? {
+    //             defaultValue: {
+    //               summary: iconButtonStyles.defaultVariants[current],
+    //             },
+    //           }
+    //         : {}),
+    //     },
+    //   };
 
-      return prev;
-    }, {}),
+    //   return prev;
+    // }, {}),
   },
   decorators: [
     (Story: Story) => (
@@ -127,17 +127,11 @@ export const Sizes = () => (
       </IconButton>
     </InlineFlex>
     <InlineFlex gap={4}>
-      <IconButton size={3} variant="primary" aria-label="">
-        <FaCheck />
-      </IconButton>
-      <IconButton size={3} variant="secondary" aria-label="">
+      <IconButton size={3} isRound variant="secondary" aria-label="">
         <FaEllipsisH />
       </IconButton>
-      <IconButton size={3} variant="ghost-primary" aria-label="">
+      <IconButton size={3} isRound variant="contrast" aria-label="">
         <FaPen />
-      </IconButton>
-      <IconButton size={3} variant="ghost-secondary" aria-label="">
-        <FaTimes />
       </IconButton>
     </InlineFlex>
   </Flex>
@@ -145,34 +139,34 @@ export const Sizes = () => (
 
 export const RenderAsLink = () => (
   <Flex gap={4}>
-    <IconButtonAsLink
+    <LinkWithIconButtonStyles
       aria-label="Open menu"
       variant="primary"
       href="javascript:;"
     >
       <FaEllipsisH />
-    </IconButtonAsLink>
-    <IconButtonAsLink
+    </LinkWithIconButtonStyles>
+    <LinkWithIconButtonStyles
       aria-label="Open menu"
       variant="secondary"
       href="javascript:;"
     >
       <FaEllipsisH />
-    </IconButtonAsLink>
-    <IconButtonAsLink
+    </LinkWithIconButtonStyles>
+    <LinkWithIconButtonStyles
       aria-label="Open menu"
       variant="ghost-primary"
       href="javascript:;"
     >
       <FaEllipsisH />
-    </IconButtonAsLink>
-    <IconButtonAsLink
+    </LinkWithIconButtonStyles>
+    <LinkWithIconButtonStyles
       aria-label="Open menu"
       variant="ghost-secondary"
       href="javascript:;"
     >
       <FaEllipsisH />
-    </IconButtonAsLink>
+    </LinkWithIconButtonStyles>
   </Flex>
 );
 
@@ -289,8 +283,6 @@ export const Loading = () => {
  */
 
 export const Active = () => {
-  const isActiveToggleLoop = useBooleanToggleLoop(true);
-
   return (
     <Flex gap={4} direction="column">
       <InlineFlex gap={4}>
@@ -304,37 +296,6 @@ export const Active = () => {
           <FaEllipsisH />
         </IconButton>
         <IconButton aria-label="Open menu" isActive variant="ghost-secondary">
-          <FaEllipsisH />
-        </IconButton>
-      </InlineFlex>
-
-      <InlineFlex gap={4}>
-        <IconButton
-          aria-label="Open menu"
-          isActive={isActiveToggleLoop}
-          variant="primary"
-        >
-          <FaEllipsisH />
-        </IconButton>
-        <IconButton
-          aria-label="Open menu"
-          isActive={isActiveToggleLoop}
-          variant="secondary"
-        >
-          <FaEllipsisH />
-        </IconButton>
-        <IconButton
-          aria-label="Open menu"
-          isActive={isActiveToggleLoop}
-          variant="ghost-primary"
-        >
-          <FaEllipsisH />
-        </IconButton>
-        <IconButton
-          aria-label="Open menu"
-          isActive={isActiveToggleLoop}
-          variant="ghost-secondary"
-        >
           <FaEllipsisH />
         </IconButton>
       </InlineFlex>
@@ -413,43 +374,5 @@ export const WithControlGroup = () => {
         </ButtonGroup>
       </ControlGroup>
     </Flex>
-  );
-};
-
-export const Custom = () => {
-  const isActive = useBooleanToggleLoop(true);
-  return (
-    <IconButton
-      aria-label=""
-      variant={0}
-      size={0}
-      isRound
-      css={{
-        width: "$12",
-        height: "$12",
-        bgc: "$neutral800",
-        color: "$neutral0",
-
-        "&:hover": {
-          bgc: "$neutral700",
-        },
-        "&:focus": {
-          background: "$neutral900",
-          boxShadow: "0px 0px 0px 2px $colors$purple400",
-        },
-        "&:active": {
-          bgc: "$neutral800",
-          boxShadow: "0px 0px 0px 2px $colors$purple400",
-        },
-
-        ...(isActive
-          ? {
-              bgc: "$neutral800",
-            }
-          : {}),
-      }}
-    >
-      <FaQuestion />
-    </IconButton>
   );
 };

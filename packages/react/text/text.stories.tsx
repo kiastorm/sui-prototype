@@ -35,23 +35,23 @@ const config: Meta<React.ComponentProps<typeof Text>> = {
       },
       description: "Theme-aware CSS",
     },
-    ...Object.keys(textStyles.variants).reduce((prev, current) => {
-      prev[current] = {
-        control: "string",
-        table: {
-          // type: null,
-          ...(textStyles.defaultVariants[current]
-            ? {
-                defaultValue: {
-                  summary: textStyles.defaultVariants[current],
-                },
-              }
-            : {}),
-        },
-      };
+    // ...Object.keys(textStyles.variants).reduce((prev, current) => {
+    //   prev[current] = {
+    //     control: "string",
+    //     table: {
+    //       // type: null,
+    //       ...(textStyles.defaultVariants[current]
+    //         ? {
+    //             defaultValue: {
+    //               summary: textStyles.defaultVariants[current],
+    //             },
+    //           }
+    //         : {}),
+    //     },
+    //   };
 
-      return prev;
-    }, {}),
+    //   return prev;
+    // }, {}),
   },
   decorators: [
     (Story: Story) => (
