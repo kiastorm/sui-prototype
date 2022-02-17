@@ -1,7 +1,8 @@
 module.exports = {
   stories: [
-    "../packages/**/*.stories.mdx",
-    "../packages/**/*.stories.@(js|jsx|ts|tsx)",
+    "../design-system/**/*.stories.mdx",
+    "../design-system/**/*.stories.@(js|jsx|ts|tsx)",
+    "../design-system/**/*.story.@(js|jsx|ts|tsx)",
   ],
   staticDirs: ["../public"],
   addons: [
