@@ -1,7 +1,7 @@
 import { Circle, Container, Flex } from ".";
 
 export default {
-  title: "Design System/Layout/Flex",
+  title: "Layout/Flex",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

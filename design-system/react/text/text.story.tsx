@@ -15,7 +15,7 @@ import {
 import { Container, InlineFlex } from "../layout";
 
 export default {
-  title: "Design System/Typography/Text",
+  title: "Typography/Text",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

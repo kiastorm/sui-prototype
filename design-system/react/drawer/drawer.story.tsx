@@ -24,7 +24,7 @@ import {
 } from "./drawer";
 
 export default {
-  title: "Design System/Overlay/Drawer",
+  title: "Overlay/Drawer",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

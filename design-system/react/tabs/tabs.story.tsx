@@ -6,7 +6,7 @@ import { Tooltip } from "../tooltip";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
 
 export default {
-  title: "Design System/Disclosure/Tabs",
+  title: "Disclosure/Tabs",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

@@ -13,7 +13,7 @@ import { useBooleanToggleLoop } from "../react-utils";
 import { ButtonGroup } from "./button-group";
 
 export default {
-  title: "Design System/Forms/IconButton",
+  title: "Forms/IconButton",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

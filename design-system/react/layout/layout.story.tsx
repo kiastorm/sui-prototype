@@ -3,7 +3,7 @@ import { Box, Circle, Flex, Spacer, Square } from ".";
 import { Container } from "../layout";
 
 export default {
-  title: "Design System/Layout/spacer",
+  title: "Layout/spacer",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

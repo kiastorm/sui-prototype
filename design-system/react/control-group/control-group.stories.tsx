@@ -4,7 +4,7 @@ import { Container, Flex, InlineFlex } from "../layout";
 import { ControlGroup } from "./control-group";
 
 export default {
-  title: "Design System/Forms/ControlGroup",
+  title: "Forms/ControlGroup",
   component: ButtonGroup,
   argTypes: {
     ref: {

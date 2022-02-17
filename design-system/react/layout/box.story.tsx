@@ -1,7 +1,7 @@
 import { Box, Container } from ".";
 
 export default {
-  title: "Design System/Layout/Box",
+  title: "Layout/Box",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 export const BasicUsage = () => (

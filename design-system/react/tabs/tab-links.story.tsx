@@ -62,7 +62,7 @@ const DisabledWithTooltip = () => {
   );
 };
 
-storiesOf("Design System/Disclosure/TabLinks", module)
+storiesOf("Disclosure/TabLinks", module)
   .addDecorator((Story) => (
     <Container css={{ py: "$4" }}>
       <Story />

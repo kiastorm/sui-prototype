@@ -1,10 +1,10 @@
 import {
-    FaChevronDown,
-    FaEllipsisH,
-    FaEllipsisV,
-    FaEnvelope,
-    FaPhone,
-    FaPlus
+  FaChevronDown,
+  FaEllipsisH,
+  FaEllipsisV,
+  FaEnvelope,
+  FaPhone,
+  FaPlus,
 } from "react-icons/fa";
 import { Button, LinkWithButtonStyles } from ".";
 import { ControlGroup } from "../control-group";
@@ -13,9 +13,8 @@ import { useBooleanToggleLoop } from "../react-utils";
 import { ButtonGroup } from "./button-group";
 import { IconButton } from "./icon-button";
 
-
 const config = {
-  title: "Design System/Forms/Button",
+  title: "Forms/Button",
   component: Button,
   decorators: [
     (Story) => (

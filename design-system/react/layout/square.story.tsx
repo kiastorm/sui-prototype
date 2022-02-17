@@ -3,7 +3,7 @@ import React from "react";
 import { Meta } from "@storybook/react";
 
 export default {
-  title: "Design System/Layout/Square",
+  title: "Layout/Square",
   component: Square,
 };
 

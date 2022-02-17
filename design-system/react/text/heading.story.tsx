@@ -2,7 +2,7 @@ import { Heading, text } from ".";
 import { Container, InlineFlex } from "../layout";
 
 export default {
-  title: "Design System/Typography/Heading",
+  title: "Typography/Heading",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 

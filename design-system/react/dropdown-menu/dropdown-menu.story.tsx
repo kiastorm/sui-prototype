@@ -8,7 +8,7 @@ import { Container } from "../layout";
 import { DropdownMenu } from "./dropdown-menu";
 
 export default {
-  title: "Design System/Overlay/DropdownMenu",
+  title: "Overlay/DropdownMenu",
   decorators: [(Story: Function) => <Container>{Story()}</Container>],
 };
 export const BasicUsage = () => {

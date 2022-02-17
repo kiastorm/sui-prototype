@@ -5,7 +5,7 @@ import { useBooleanToggleLoop } from "../react-utils";
 import { ButtonGroup } from "./button-group";
 
 export default {
-  title: "Design System/Forms/ButtonGroup",
+  title: "Forms/ButtonGroup",
   decorators: [
     (Story: Function) => (
       <Container>
