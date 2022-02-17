@@ -10,5 +10,6 @@ dist-ssr
 .cache
 server/dist
 public/dist
+storybook-static
 packages/*/dist
 .turbo

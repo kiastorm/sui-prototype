@@ -23,7 +23,7 @@ export const HeadingComponent = () => (
 export const TextStyleVariants = () => (
   <InlineFlex direction="column" gap={4}>
     <h3 className={text({ variant: "heading-1" })}>heading-1 (h1)</h3>
-    <p className={text({ variant: "heading-2" })}>heading-2 (h2)</h>
+    <p className={text({ variant: "heading-2" })}>heading-2 (h2)</p>
     <h3 className={text({ variant: "heading-3" })}>heading-3 (h3)</h3>
     <h4 className={text({ variant: "heading-4" })}>heading-4 (h4)</h4>
     <h5 className={text({ variant: "heading-5" })}>heading-5 (h5)</h5>
