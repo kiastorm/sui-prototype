@@ -9,7 +9,6 @@ dist-ssr
 .env
 .cache
 server/dist
-.npmrc
 public/dist
 packages/*/dist
 .turbo
