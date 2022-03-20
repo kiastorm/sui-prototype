@@ -1,16 +1,9 @@
 import { css, keyframes } from "../../../../react/react-stitches";
 
-export const navRoot = css({
-  overflowY: "hidden",
-  display: "flex",
-  flexDirection: "column",
-});
+export const navRoot = css({});
 
 export const navSectionAccordionHeader = css({
-  display: "flex",
-  alignItems: "center",
-  flexShrink: 0,
-  px: "$3",
+  p: "$3",
   gap: "$1",
   height: "$10",
   svg: {
@@ -77,11 +70,6 @@ const close = keyframes({
 });
 
 export const navSectionAccordionContent = css({
-  maxHeight: "100%",
-  // flexBasis: "500px",
-  overflowY: "auto",
-  flexGrow: 1,
-
   variants: {
     shouldAnimate: {
       true: {

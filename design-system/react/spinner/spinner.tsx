@@ -7,37 +7,37 @@ import { keyframes } from "../react-stitches";
 import { VisuallyHidden } from "../visually-hidden";
 
 const spin = keyframes({
-    "0%": {
-        transform: "rotate(0deg)",
-    },
-    "100%": {
-        transform: "rotate(360deg)",
-    },
+  "0%": {
+    transform: "rotate(0deg)",
+  },
+  "100%": {
+    transform: "rotate(360deg)",
+  },
 });
 
 interface SpinnerOptions {
-    /**
-     * For accessibility, it is important to add a fallback loading text.
-     * This text will be visible to screen readers.
-     */
-    label?: string;
+  /**
+   * For accessibility, it is important to add a fallback loading text.
+   * This text will be visible to screen readers.
+   */
+  label?: string;
 }
 
 export interface SpinnerProps
-    extends React.ComponentProps<"div">,
-        SpinnerOptions {}
+  extends React.ComponentProps<"div">,
+    SpinnerOptions {}
 
 type SpinnerElement = React.ElementRef<typeof Box>;
 
 const spinner = css({
-    display: "inline-block",
-    borderColor: "currentColor",
-    borderStyle: "solid",
-    borderRadius: "99999px",
-    borderWidth: "$2",
-    borderBottomColor: "transparent",
-    borderLeftColor: "transparent",
-    animation: `${spin} 0.45s linear infinite`,
+  display: "inline-block",
+  borderColor: "currentColor",
+  borderStyle: "solid",
+  borderRadius: "99999px",
+  borderWidth: "$2",
+  borderBottomColor: "transparent",
+  borderLeftColor: "transparent",
+  animation: `${spin} 0.45s linear infinite`,
 });
 
 /**
@@ -46,21 +46,21 @@ const spinner = css({
  *
  */
 export const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>(
-    (props, ref) => {
-        const { label = "Loading...", className, ...rest } = props;
+  (props, ref) => {
+    const { label = "Loading...", className, ...rest } = props;
 
-        return (
-            <span
-                ref={ref}
-                className={cx("sui-spinner", spinner(), className)}
-                {...rest}
-            >
-                {label && <VisuallyHidden>{label}</VisuallyHidden>}
-            </span>
-        );
-    }
+    return (
+      <span
+        ref={ref}
+        className={cx("sui-spinner", spinner(), className)}
+        {...rest}
+      >
+        {label && <VisuallyHidden>{label}</VisuallyHidden>}
+      </span>
+    );
+  }
 );
 
 if (__DEV__) {
-    Spinner.displayName = "Spinner";
+  Spinner.displayName = "Spinner";
 }

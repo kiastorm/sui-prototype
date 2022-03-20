@@ -56,7 +56,6 @@ export const mockRouter = {
   params: { workspaceGroupId: workspaceGroups[1].id },
 };
 export const DetailWorkspaceGroupPage = () => {
-  const contactUs = useContactUs();
   const [resizeWorkspaceDrawerOpen, setResizeWorkspaceDrawerOpen] =
     useBoolean();
   const [attachDetachDatabaseDrawerOpen, setAttachDetachDatabaseDrawerOpen] =
@@ -69,7 +68,7 @@ export const DetailWorkspaceGroupPage = () => {
     Array<StringOrNumber>
   >([databases[0].id, databases[1].id]);
 
-  const onContactUsClick = contactUs.setIsContactUsDialogOpen.toggle;
+  const contactUs = useContactUs();
 
   return (
     <Main
@@ -105,7 +104,10 @@ export const DetailWorkspaceGroupPage = () => {
             <Badge>AWS/US-EAST-1</Badge>
           </Flex>
           <ButtonGroup>
-            <Button variant="secondary" onClick={onContactUsClick}>
+            <Button
+              variant="secondary"
+              onClick={contactUs.setIsContactUsDialogOpen.toggle}
+            >
               Contact Us
             </Button>
 

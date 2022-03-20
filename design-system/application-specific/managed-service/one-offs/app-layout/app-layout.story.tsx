@@ -1,7 +1,7 @@
 import { Args } from "@storybook/addons";
 import { Meta } from "@storybook/react";
 import React from "react";
-import "../styles.css";
+import "../../styles.css";
 import { AppLayout, Main } from "./app-layout";
 
 export default {

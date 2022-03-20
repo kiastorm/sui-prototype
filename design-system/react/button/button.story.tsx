@@ -33,6 +33,7 @@ export const BasicUsage = () => (
     <Button variant="secondary">Cancel</Button>
     <Button variant="ghost-primary">Edit</Button>
     <Button variant="ghost-secondary">user@email.com</Button>
+    <Button variant="danger">user@email.com</Button>
   </InlineFlex>
 );
 
@@ -51,6 +52,9 @@ export const Sizes = () => (
       <Button size={1} variant="ghost-secondary">
         user@email.com
       </Button>
+      <Button size={1} variant="danger">
+        Delete
+      </Button>
     </InlineFlex>
     <InlineFlex gap={4}>
       <Button size={2} variant="primary">
@@ -65,6 +69,9 @@ export const Sizes = () => (
       <Button size={2} variant="ghost-secondary">
         user@email.com
       </Button>
+      <Button size={2} variant="danger">
+        Delete
+      </Button>
     </InlineFlex>
     <InlineFlex gap={4}>
       <Button size={3} variant="primary">
@@ -78,6 +85,9 @@ export const Sizes = () => (
       </Button>
       <Button size={3} variant="ghost-secondary">
         user@email.com
+      </Button>
+      <Button size={3} variant="danger">
+        Delete
       </Button>
     </InlineFlex>
   </Flex>
@@ -97,6 +107,9 @@ export const RenderAsLink = () => (
     <LinkWithButtonStyles variant="ghost-secondary" href="javascript:;">
       Button
     </LinkWithButtonStyles>
+    <LinkWithButtonStyles variant="danger" href="javascript:;">
+      Button
+    </LinkWithButtonStyles>
   </Flex>
 );
 
@@ -112,6 +125,9 @@ export const Disabled = () => (
       Button
     </Button>
     <Button disabled variant="ghost-secondary">
+      Button
+    </Button>
+    <Button disabled variant="danger">
       Button
     </Button>
   </InlineFlex>
@@ -135,6 +151,9 @@ export const Loading = () => {
         <Button loading variant="ghost-secondary">
           Action
         </Button>
+        <Button loading variant="danger">
+          Action
+        </Button>
       </InlineFlex>
       <InlineFlex gap={4}>
         <Button spinnerPlacement="right" loading variant="primary">
@@ -147,6 +166,9 @@ export const Loading = () => {
           Action
         </Button>
         <Button spinnerPlacement="right" loading variant="ghost-secondary">
+          Action
+        </Button>
+        <Button spinnerPlacement="right" loading variant="danger">
           Action
         </Button>
       </InlineFlex>

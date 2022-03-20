@@ -90,7 +90,7 @@ const main = css(mainBaseStyles, {
 
 export const Main = React.forwardRef<
   React.ElementRef<"main">,
-  React.ComponentProps<"main"> & { css: CSS }
+  React.ComponentProps<"main"> & { css?: CSS }
 >((props, forwardedRef) => {
   const { className, css, ...rest } = props;
   return (
@@ -178,6 +178,7 @@ export const AppLayout = (props: AppLayoutProps) => {
 
       return value;
     });
+
   const [expandedNavItemsCloud, setExpandedNavItemsCloud] = React.useState(
     () => {
       const value = [];

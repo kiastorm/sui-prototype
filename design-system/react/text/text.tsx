@@ -131,6 +131,7 @@ export const Small = styled("small", text);
 export const Deleted = styled("del", text);
 
 export const H1 = styled("h1", text);
+
 export const H2 = styled("h2", text);
 export const H3 = styled("h3", text);
 export const H4 = styled("h4", text);

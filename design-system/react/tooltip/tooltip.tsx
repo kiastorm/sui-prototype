@@ -43,6 +43,29 @@ const tooltipContent = css({
   },
 });
 
+export const Tooltip2Content = (props) => (
+  <TooltipPrimitive.Content
+    className={tooltipContent({})}
+    side="top"
+    align="center"
+    sideOffset={5}
+    {...props}
+  >
+    {props.children}
+    <Box css={{ color: "$transparentExtreme" }}>
+      <TooltipPrimitive.Arrow
+        width={16}
+        height={8}
+        style={{
+          fill: "currentColor",
+        }}
+      />
+    </Box>
+  </TooltipPrimitive.Content>
+);
+export const Tooltip2Trigger = TooltipPrimitive.Trigger;
+export const Tooltip2Root = TooltipPrimitive.Root;
+
 export function Tooltip({
   children,
   content,

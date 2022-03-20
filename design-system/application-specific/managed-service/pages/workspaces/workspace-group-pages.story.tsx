@@ -1,5 +1,5 @@
-import { AppLayout } from "../app-layout";
-import "../styles.css";
+import { AppLayout } from "../../one-offs/app-layout";
+import "../../styles.css";
 import {
   DetailWorkspaceGroupPage,
   mockRouter,
