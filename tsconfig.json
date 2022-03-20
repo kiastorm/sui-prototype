@@ -4,7 +4,8 @@
   "compilerOptions": {
     "paths": {
       "*": ["node_modules/*"],
-      "@emotion/core": ["./types/index.d.ts"]
+      // "@single-js/common/design-system/*": ["./design-system/*"],
+      "@emotion/core": ["./index.d.ts"]
     }
   }
 }

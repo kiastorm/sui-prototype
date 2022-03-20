@@ -1,8 +1,25 @@
 {
-  "include": ["."],
-  "exclude": ["node_modules", ".eslintrc.js"],
-  "extends": "./packages/core/tsconfig/react-library.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React UI Library",
   "compilerOptions": {
-    "baseUrl": "."
-  }
+    "lib": ["dom", "ES2015"],
+    "module": "ESNext",
+    "target": "ES6",
+    "jsx": "react-jsx",
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["."],
+  "exclude": ["node_modules", ".eslintrc.js"]
 }
